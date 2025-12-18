@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://bmmc.ph/</loc>
+    <lastmod>2023-12-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Main Sections (using hash-based navigation) -->
+  <url>
+    <loc>https://bmmc.ph/#about</loc>
+    <lastmod>2023-12-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://bmmc.ph/#team</loc>
+    <lastmod>2023-12-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://bmmc.ph/#skills</loc>
+    <lastmod>2023-12-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://bmmc.ph/#services</loc>
+    <lastmod>2023-12-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://bmmc.ph/#how-we-work</loc>
+    <lastmod>2023-12-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://bmmc.ph/#projects</loc>
+    <lastmod>2023-12-31</lastmod>
+    <changefreq>biweekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://bmmc.ph/#case-studies</loc>
+    <lastmod>2023-12-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://bmmc.ph/#testimonials</loc>
+    <lastmod>2023-12-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://bmmc.ph/#faq</loc>
+    <lastmod>2023-12-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://bmmc.ph/#contact</loc>
+    <lastmod>2023-12-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Projects (examples based on what you have) -->
+  <url>
+    <loc>https://bmmc.ph/projects/rodriguez-rizal-travel</loc>
+    <lastmod>2023-12-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://bmmc.ph/projects/beauty-lab-cleanic</loc>
+    <lastmod>2023-12-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://bmmc.ph/projects/crypto-web3</loc>
+    <lastmod>2023-12-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://bmmc.ph/projects/himari-ai</loc>
+    <lastmod>2023-12-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Case Studies (detailed versions) -->
+  <url>
+    <loc>https://bmmc.ph/case-studies/e-commerce-redesign-optimization</loc>
+    <lastmod>2023-12-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://bmmc.ph/case-studies/ai-powered-customer-support</loc>
+    <lastmod>2023-12-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://bmmc.ph/case-studies/travel-booking-platform-revamp</loc>
+    <lastmod>2023-12-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Legal and Policy Pages -->
+  <url>
+    <loc>https://bmmc.ph/privacy-policy</loc>
+    <lastmod>2023-12-31</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <url>
+    <loc>https://bmmc.ph/terms-of-service</loc>
+    <lastmod>2023-12-31</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset> 
