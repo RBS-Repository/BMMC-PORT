@@ -1,146 +1,60 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import Spline from '@splinetool/react-spline';
 import './WhatWeDo.css';
 
 const WhatWeDo = () => {
-    const [isLoading, setIsLoading] = useState(true);
     const services = [
         {
-            icon: "🤖",
+            icon: "01",
             title: "AI Development",
-            description: "Custom AI solutions that transform businesses through intelligent automation and data-driven insights",
-            skills: ["Large Language Models", "Machine Learning", "ChatGPT Integration", "AI Assistants"]
+            description: "We engineer intelligent systems that automate complex workflows and generate actionable insights.",
+            tags: ["LLMs", "Machine Learning", "Automation"]
         },
         {
-            icon: "💼",
-            title: "Business AI Integration",
-            description: "Seamlessly integrate AI into your existing business processes and tools to enhance productivity and decision-making",
-            skills: ["Workflow Automation", "Data Analysis", "Predictive Models", "Custom AI Tools"]
+            icon: "02",
+            title: "Business Integration",
+            description: "Seamlessly embedding AI architectures into existing ecosystems to drive efficiency and scale.",
+            tags: ["Strategy", "API Design", "Cloud Ops"]
         },
         {
-            icon: "💻",
-            title: "Web Development",
-            description: "AI-powered websites and web applications built with cutting-edge technologies for superior user experiences",
-            skills: ["React", "Node.js", "Next.js", "AI-Enhanced UX"]
+            icon: "03",
+            title: "Web Engineering",
+            description: "Building performance-first web applications with cutting-edge frameworks and responsive design.",
+            tags: ["React", "Next.js", "WebGL"]
         },
-   
-     
         {
-            icon: "🚀",
-            title: "Digital Transformation",
-            description: "Comprehensive AI strategy and implementation to propel your business into the future of technology",
-            skills: ["AI Strategy", "Data Infrastructure", "Process Automation", "Smart Analytics"]
+            icon: "04",
+            title: "Digital Strategy",
+            description: "Comprehensive roadmaps for digital transformation, ensuring long-term technological resilience.",
+            tags: ["Consulting", "Analytics", "Growth"]
         }
     ];
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.2
-            }
-        }
-    };
-
-    const cardVariants = {
-        hidden: { 
-            opacity: 0,
-            y: 50
-        },
-        visible: { 
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 0.6,
-                ease: "easeOut"
-            }
-        }
-    };
-
     return (
-        <section className="whatwedo-section" id="services">
-            <div className="spline-background">
-                <Spline 
-                    scene="https://prod.spline.design/3oDIGGuUyodNRAbU/scene.splinecode "
-                    onLoad={() => setIsLoading(false)}
-                />
-                {isLoading && (
-                    <div className="loading-screen">
-                        <div className="loader"></div>
-                        <p>Loading 3D Scene...</p>
-                    </div>
-                )}
-            </div>
-            
-            <div className="whatwedo-overlay"></div>
+        <section className="whatwedo-section-arch" id="services">
+            <div className="arch-container">
+                <div className="arch-header">
+                    <h2>Our Expertise</h2>
+                    <div className="header-line"></div>
+                </div>
 
-            <div className="whatwedo-container">
-                <motion.div 
-                    className="whatwedo-header"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                >
-                    <h2>What We Do</h2>
-                    <div className="section-line"></div>
-                    <p className="section-subtitle">Transforming Ideas into Digital Reality</p>
-                </motion.div>
-
-                <motion.div 
-                    className="services-grid"
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                >
+                <div className="arch-grid">
                     {services.map((service, index) => (
-                        <motion.div 
-                            key={index} 
-                            className="service-card"
-                            variants={cardVariants}
-                            whileHover={{ 
-                                y: -10,
-                                transition: { duration: 0.3 }
-                            }}
-                        >
-                            <motion.div 
-                                className="service-icon"
-                                initial={{ scale: 0.5 }}
-                                whileInView={{ scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: 0.2 }}
-                            >
-                                {service.icon}
-                            </motion.div>
+                        <div key={index} className="arch-card">
+                            <span className="arch-number">{service.icon}</span>
                             <h3>{service.title}</h3>
                             <p>{service.description}</p>
-                            <div className="skills-container">
-                                {service.skills.map((skill, i) => (
-                                    <motion.span 
-                                        key={i} 
-                                        className="skill-tag"
-                                        initial={{ opacity: 0, scale: 0.8 }}
-                                        whileInView={{ opacity: 1, scale: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ 
-                                            duration: 0.3, 
-                                            delay: 0.4 + (i * 0.1)
-                                        }}
-                                    >
-                                        {skill}
-                                    </motion.span>
+                            <div className="arch-tags">
+                                {service.tags.map(tag => (
+                                    <span key={tag}>{tag}</span>
                                 ))}
                             </div>
-                            <div className="service-hover-effect"></div>
-                        </motion.div>
+                        </div>
                     ))}
-                </motion.div>
+                </div>
             </div>
         </section>
     );
 };
 
-export default WhatWeDo; 
+export default WhatWeDo;

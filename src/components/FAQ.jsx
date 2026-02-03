@@ -7,114 +7,71 @@ const FAQ = () => {
 
     const faqs = [
         {
-            question: "What services do you offer?",
+            question: "Technical Capabilities",
             answer: "We offer a comprehensive range of digital services including web development, mobile app development, UI/UX design, and digital strategy consulting. Our team specializes in creating custom solutions tailored to your specific needs."
         },
         {
-            question: "How long does a typical project take?",
+            question: "Delivery Timeline",
             answer: "Project timelines vary depending on scope and complexity. A typical website project takes 6-12 weeks, while larger applications may take 3-6 months. We'll provide a detailed timeline during our initial consultation."
         },
         {
-            question: "What is your development process?",
+            question: "Foundational Process",
             answer: "Our development process follows an agile methodology with five key phases: Discovery, Strategy, Design, Development, and Launch. We maintain clear communication and regular updates throughout the project lifecycle."
         },
         {
-            question: "Do you provide ongoing support?",
+            question: "Support & Maintenance",
             answer: "Yes, we offer comprehensive post-launch support and maintenance packages. This includes regular updates, security patches, performance monitoring, and technical support to ensure your solution continues to perform optimally."
         },
         {
-            question: "What technologies do you use?",
+            question: "Modern Tech-Stack",
             answer: "We work with modern technologies including React, Node.js, Next.js, and various cloud platforms. Our tech stack is chosen based on project requirements to ensure the best performance and scalability."
         }
     ];
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.1
-            }
-        }
-    };
-
-    const itemVariants = {
-        hidden: { 
-            opacity: 0,
-            y: 20
-        },
-        visible: { 
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 0.5
-            }
-        }
-    };
-
-    const toggleAccordion = (index) => {
-        setActiveIndex(activeIndex === index ? null : index);
-    };
-
     return (
-        <section className="faq-section" id="faq">
-            <div className="faq-container">
-                <motion.div 
-                    className="faq-header"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                >
-                    <h2>FAQ</h2>
-                    <div className="section-line"></div>
-                    <p className="section-subtitle">Common Questions, Expert Answers</p>
-                </motion.div>
+        <section className="faq-architectural" id="faq">
+            <div className="arch-container">
+                <div className="arch-grid">
+                    <div className="arch-side">
+                        <span className="arch-label">Inquiry / 03</span>
+                        <h2 className="arch-title">Frequently <br /> Asked</h2>
+                        <div className="arch-line"></div>
+                        <p className="arch-desc">Everything you need to know about our collaboration model and delivery standards.</p>
+                    </div>
 
-                <motion.div 
-                    className="faq-grid"
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                >
-                    {faqs.map((faq, index) => (
-                        <motion.div 
-                            key={index}
-                            className={`faq-item ${activeIndex === index ? 'active' : ''}`}
-                            variants={itemVariants}
-                            whileHover={{ scale: 1.02 }}
-                            onClick={() => toggleAccordion(index)}
-                        >
-                            <motion.div 
-                                className="faq-question"
-                                initial={false}
-                            >
-                                <h3>{faq.question}</h3>
-                                <motion.span 
-                                    className="faq-icon"
-                                    animate={{ rotate: activeIndex === index ? 180 : 0 }}
-                                    transition={{ duration: 0.3 }}
+                    <div className="arch-main">
+                        {faqs.map((faq, index) => (
+                            <div key={index} className="arch-item">
+                                <button
+                                    className={`arch-trigger ${activeIndex === index ? 'active' : ''}`}
+                                    onClick={() => setActiveIndex(activeIndex === index ? null : index)}
                                 >
-                                    {activeIndex === index ? '−' : '+'}
-                                </motion.span>
-                            </motion.div>
-                            <AnimatePresence>
-                                {activeIndex === index && (
-                                    <motion.div 
-                                        className="faq-answer"
-                                        initial={{ height: 0, opacity: 0 }}
-                                        animate={{ height: "auto", opacity: 1 }}
-                                        exit={{ height: 0, opacity: 0 }}
-                                        transition={{ duration: 0.3 }}
-                                    >
-                                        <p>{faq.answer}</p>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-                        </motion.div>
-                    ))}
-                </motion.div>
+                                    <span className="arch-index">0{index + 1}</span>
+                                    <span className="arch-question">{faq.question}</span>
+                                    <div className="arch-plus">
+                                        <div className="plus-line horizontal"></div>
+                                        <div className={`plus-line vertical ${activeIndex === index ? 'collapsed' : ''}`}></div>
+                                    </div>
+                                </button>
+                                <AnimatePresence>
+                                    {activeIndex === index && (
+                                        <motion.div
+                                            className="arch-content"
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: 'auto', opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                                        >
+                                            <div className="arch-inner">
+                                                <p>{faq.answer}</p>
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
         </section>
     );

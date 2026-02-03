@@ -1,120 +1,61 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import './Footer.css';
 
 const Footer = () => {
-    const currentYear = new Date().getFullYear();
-    
     return (
-        <footer className="footer" id="footer" itemScope itemType="https://schema.org/WPFooter">
-            <div className="footer-container">
-                <div className="footer-top">
-                    <div className="footer-brand">
-                        <motion.div 
-                            className="footer-logo-container"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6 }}
-                        >
-                            <img 
-                                src="/BMMC BANNER PNG.png" 
-                                alt="BMMC Logo" 
-                                className="footer-logo-img" 
-                                width="150"
-                                height="auto"
-                                loading="lazy"
-                            />
-                            <span className="visually-hidden">BMMC</span>
-                        </motion.div>
-                        <motion.p 
-                            className="footer-tagline"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.1 }}
-                        >
-                            Transforming businesses with intelligent AI solutions
-                        </motion.p>
+        <footer className="footer-premium">
+            <div className="footer-main-container">
+                <div className="footer-cta-block">
+                    <h2 className="footer-big-title">READY TO START?</h2>
+                    <Link to="/#contact" className="footer-contact-link">Get in touch — Let's build something great.</Link>
+                </div>
+
+                <div className="footer-nav-grid">
+                    <div className="footer-brand-side">
+                        <div className="footer-brand-logo">BMMC</div>
+                        <p className="footer-about">We are a boutique creative studio dedicated to crafting high-performance digital experiences for forward-thinking brands.</p>
+                        <div className="footer-social">
+                            <a href="#">FB</a>
+                            <a href="#">IG</a>
+                            <a href="#">LI</a>
+                        </div>
                     </div>
-                    
-                    <div className="footer-links">
-                        <motion.div 
-                            className="footer-links-column"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.2 }}
-                        >
-                            <h3>Navigation</h3>
-                            <ul>
-                                <li><a href="#home">Home</a></li>
-                                <li><a href="#about">About</a></li>
-                                <li><a href="#projects">Projects</a></li>
-                                <li><a href="#testimonials">Testimonials</a></li>
-                                <li><a href="#contact">Contact</a></li>
-                            </ul>
-                        </motion.div>
-                        
-                        <motion.div 
-                            className="footer-links-column"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.3 }}
-                        >
-                            <h3>Services</h3>
-                            <ul>
-                                <li>AI Development</li>
-                                <li>Business AI Integration</li>
-                                <li>Web Development</li>
-                                <li>Mobile Apps</li>
-                                <li>UI/UX Design</li>
-                            </ul>
-                        </motion.div>
-                        
-                        <motion.div 
-                            className="footer-links-column"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.4 }}
-                        >
-                            <h3>Contact</h3>
-                            <ul>
-                                <li>budaquecreations@gmail.com</li>
-                                <li>+63 976 292 6882</li>
-                                <li>Rodriguez, Rizal, Philippines</li>
-                            </ul>
-                            <div className="social-icons">
-                                <a href="https://www.facebook.com/profile.php?id=61571984564554" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                                    <i className="fab fa-facebook-f"></i>
-                                </a>
-                        
-                            </div>
-                        </motion.div>
+
+                    <div className="footer-nav-column">
+                        <span className="nav-col-title">Navigation</span>
+                        <Link to="/">Home</Link>
+                        <Link to="/all-projects">Projects</Link>
+                        <Link to="/#about">About</Link>
+                        <Link to="/#contact">Contact</Link>
+                    </div>
+
+                    <div className="footer-nav-column">
+                        <span className="nav-col-title">Services</span>
+                        <a href="#">Web Design</a>
+                        <a href="#">Development</a>
+                        <a href="#">AI Integration</a>
+                        <a href="#">Branding</a>
+                    </div>
+
+                    <div className="footer-nav-column">
+                        <span className="nav-col-title">Inquiries</span>
+                        <p>budaquecreations@gmail.com</p>
+                        <p>+63 976 292 6882</p>
                     </div>
                 </div>
-                
-                <motion.div 
-                    className="footer-bottom"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.5 }}
-                >
-                    <div className="copyright">
-                        © {currentYear} BMMC (Budaqe Multi Media Creation). All rights reserved.
-                    </div>
+
+                <div className="footer-bottom-bar">
+                    <div className="copyright">© 2024 Budaqe Multi Media Creation. All rights reserved.</div>
                     <div className="footer-legal">
-                        <a href="/privacy">Privacy Policy</a>
-                        <span className="separator">|</span>
-                        <a href="/terms">Terms of Service</a>
+                        <a href="#">Privacy</a>
+                        <a href="#">Terms</a>
                     </div>
-                </motion.div>
+                </div>
             </div>
         </footer>
     );
 };
 
-export default Footer; 
+export default Footer;

@@ -1,249 +1,142 @@
 .about-section {
-    position: relative;
+    background: #ffffff;
+    /* Stark contrast to dark theme */
+    color: #000;
     min-height: 100vh;
-    height: auto;
-    width: 100%;
-    
-    padding: 100px 0;
-    overflow: hidden;
-    scroll-snap-align: start;
-}
-
-.spline-background,
-.spline-background3,
-.SplineScene {
-    display: none;
-}
-
-.about-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: none;
-}
-
-.about-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    position: relative;
-    z-index: 2;
-    height: auto;
-    overflow: visible;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-.about-container::-webkit-scrollbar {
-    display: none;
-}
-
-.about-header {
-    text-align: center;
-    margin-bottom: 4rem;
-}
-
-.about-header h2 {
-    font-size: 3rem;
-    color: var(--text);
-    margin-bottom: 1rem;
-    background: linear-gradient(45deg, #fff, var(--primary));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.section-line {
-    width: 100px;
-    height: 4px;
-    background: var(--primary);
-    margin: 0 auto;
     position: relative;
     overflow: hidden;
 }
 
-.section-line::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.3);
-    animation: shimmer 2s infinite;
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 100px 2rem;
+    gap: 4rem;
 }
 
-.about-content {
+.about-sticky {
+    position: sticky;
+    top: 100px;
+    height: 50vh;
     display: flex;
     flex-direction: column;
-    gap: 4rem;
-    align-items: center;
-}
-
-.about-text-container {
-    width: 100%;
-    max-width: 800px;
-    text-align: center;
-    border-right: none;
-    padding-right: 0;
-}
-
-.about-text h3 {
-    font-size: 2rem;
-    color: var(--text);
-    margin-bottom: 1.5rem;
-}
-
-.about-text p {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.8);
-    line-height: 1.6;
-}
-
-.services-grid-container {
-    width: 100%;
-    max-width: 1000px;
-    margin-top: 2rem;
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    padding: 0;
     justify-content: center;
 }
 
-.service-card {
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 15px;
-    padding: 2.5rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    text-align: center;
-    flex: none;
-    max-width: none;
+.about-sticky h2 {
+    font-size: 6rem;
+    line-height: 0.9;
+    font-family: 'Oswald', sans-serif;
+    color: #000;
+    text-transform: uppercase;
 }
 
-.service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 243, 255, 0.2);
-    background: rgba(0, 243, 255, 0.1);
+.about-decor-line {
+    width: 100px;
+    height: 5px;
+    background: #000;
+    margin-top: 2rem;
 }
 
-.service-icon {
-    font-size: 3.5rem;
+.about-stream {
+    padding-top: 20vh;
+}
+
+.stream-block {
+    margin-bottom: 15rem;
+}
+
+.chapter-marker {
+    display: block;
+    font-family: 'Courier New', monospace;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    color: #FF0055;
+    letter-spacing: 1px;
+}
+
+.stream-block h3 {
+    font-size: 2.5rem;
     margin-bottom: 1.5rem;
-    color: var(--primary);
+    font-weight: 600;
+    letter-spacing: -1px;
 }
 
-.service-card h4 {
-    color: var(--text);
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-}
-
-.service-card p {
-    color: rgba(255, 255, 255, 0.7);
+.stream-block p {
+    font-size: 1.25rem;
     line-height: 1.6;
-    font-size: 1.1rem;
+    color: #333;
+    font-weight: 300;
+}
+
+.highlight {
+    background: #000;
+    color: white;
+    padding: 3rem;
+    position: relative;
+    margin-right: -4rem;
+    /* Break grid */
+}
+
+.highlight p {
+    color: #ccc;
+}
+
+/* Ticker */
+.scrolling-ticker {
+    background: #000;
+    color: white;
+    padding: 1.5rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ticker-track {
+    animation: scroll 20s linear infinite;
+    display: inline-block;
+}
+
+.ticker-track span {
+    font-size: 1.5rem;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    margin-right: 2rem;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 @media (max-width: 768px) {
-    .about-section {
-        padding: 60px 0;
-        min-height: auto;
+    .about-grid {
+        grid-template-columns: 1fr;
     }
 
-    .about-container {
-        padding: 0 15px;
+    .about-sticky {
+        position: relative;
+        top: 0;
+        height: auto;
+        margin-bottom: 4rem;
     }
 
-    .about-header h2 {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
+    .about-sticky h2 {
+        font-size: 4rem;
     }
 
-    .about-content {
-        gap: 3rem;
+    .stream-block {
+        margin-bottom: 6rem;
     }
 
-    .about-text-container {
-        max-width: none;
+    .highlight {
+        margin-right: 0;
     }
-
-    .about-text h3 {
-        font-size: 2rem;
-        margin-bottom: 1rem;
-    }
-
-    .about-text p {
-        font-size: 1rem;
-        margin-bottom: 2rem;
-    }
-
-    .services-grid-container {
-        margin-top: 1.5rem;
-    }
-
-    .services-grid {
-        gap: 1.5rem;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-
-    .service-card {
-        padding: 2rem;
-    }
-
-    .service-icon {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-    }
-
-    .service-card h4 {
-        font-size: 1.5rem;
-    }
-
-    .service-card p {
-        font-size: 0.9rem;
-    }
-}
-
-/* Small Mobile Devices */
-@media (max-width: 480px) {
-    .about-header h2 {
-        font-size: 2rem;
-    }
-
-    .about-text h3 {
-        font-size: 1.5rem;
-    }
-
-    .service-card {
-        padding: 1.5rem;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-
-    .service-icon {
-        font-size: 2.5rem;
-    }
-
-    .service-card h4 {
-        font-size: 1.3rem;
-    }
-}
-
-/* Remove loading screen styles if they are not used anymore */
-.loading-screen,
-.loader {
-    display: none;
-}
-
-@keyframes rotation {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
 }

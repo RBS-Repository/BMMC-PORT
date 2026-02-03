@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const location = useLocation();
+    const isHome = location.pathname === '/';
 
     useEffect(() => {
         const handleScroll = () => {
@@ -18,138 +21,97 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, [scrolled]);
 
-    const menuVariants = {
-        closed: {
-            opacity: 0,
-            x: "100%",
-            transition: {
-                duration: 0.3
-            }
-        },
-        open: {
-            opacity: 1,
-            x: 0,
-            transition: {
-                duration: 0.3
-            }
-        }
-    };
-
     const toggleMenu = () => {
         setIsOpen(!isOpen);
-        // Prevent scrolling when menu is open
-        document.body.style.overflow = !isOpen ? 'hidden' : 'unset';
-    };
-
-    const closeMenu = () => {
-        setIsOpen(false);
-        document.body.style.overflow = 'unset';
     };
 
     return (
-        <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-            <div className="navbar-container">
-                <div className="navbar-logo">
-              <img href="/" src="/BMMC BANNER PNG.png" alt="logo"  style={{ width: '145px', height: '65px', marginBottom: '-15px', paddingBottom: '10px'}} />
-                </div>
-                
-                {/* Desktop Menu */}
-                <div className="navbar-links desktop-menu">
-                    <a href="#home" className="nav-link">Home</a>
-                    <a href="#about" className="nav-link">About</a>
-                    <a href="#services" className="nav-link">Services</a>
-                    <a href="#maintenance" className="nav-link">Maintenance</a>
-                    <a href="#case-studies" className="nav-link">Studies</a>
-                    <a href="#projects" className="nav-link  contact-btn">Projects</a>
-                    <a href="#contact" className="nav-link contact-btn">Contact</a>
-                </div>
+        <>
+            <motion.nav
+                className={`navbar ${scrolled ? 'scrolled' : ''}`}
+                initial={{ y: -100, opacity: 0, x: "-50%" }}
+                animate={{ y: 0, opacity: 1, x: "-50%" }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            >
+                <div className="navbar-content">
+                    {/* Logo Area */}
+                    <div className="navbar-logo">
+                        <span className="logo-text">BMMC</span>
+                    </div>
 
-                {/* Hamburger Button */}
-                <motion.button 
-                    className="hamburger-btn"
-                    onClick={toggleMenu}
-                    initial={false}
-                    animate={isOpen ? "open" : "closed"}
-                >
-                    <motion.span 
-                        className={`hamburger-line ${isOpen ? 'open' : ''}`}
-                    ></motion.span>
-                </motion.button>
+                    {/* Desktop Links */}
+                    <div className="desktop-links">
+                        <Link to="/" className="nav-link">Home</Link>
+                        {isHome ? (
+                            <>
+                                <a href="#projects" className="nav-link">Work</a>
+                                <a href="#about" className="nav-link">About</a>
+                                <a href="#team" className="nav-link">Team</a>
+                                <a href="#contact" className="nav-link">Contact</a>
+                            </>
+                        ) : (
+                            <>
+                                <Link to="/#projects" className="nav-link">Work</Link>
+                                <Link to="/#about" className="nav-link">About</Link>
+                                <Link to="/#team" className="nav-link">Team</Link>
+                                <Link to="/#contact" className="nav-link">Contact</Link>
+                            </>
+                        )}
+                    </div>
 
-                {/* Mobile Menu */}
-                <AnimatePresence>
-                    {isOpen && (
-                        <motion.div 
-                            className="mobile-menu"
-                            variants={menuVariants}
-                            initial="closed"
-                            animate="open"
-                            exit="closed"
-                        >
-                            <div className="mobile-menu-links">
-                                <motion.a 
-                                    href="#home" 
-                                    className="nav-link"
-                                    onClick={closeMenu}
-                                    whileHover={{ x: 10 }}
-                                >
-                                    Home
-                                </motion.a>
-                                <motion.a 
-                                    href="#about" 
-                                    className="nav-link"
-                                    onClick={closeMenu}
-                                    whileHover={{ x: 10 }}
-                                >
-                                    About
-                                </motion.a>
-                                <motion.a 
-                                    href="#ai-services" 
-                                    className="nav-link"
-                                    onClick={closeMenu}
-                                    whileHover={{ x: 10 }}
-                                >
-                                    AI Services
-                                </motion.a>
-                                <motion.a 
-                                    href="#maintenance" 
-                                    className="nav-link"
-                                    onClick={closeMenu}
-                                    whileHover={{ x: 10 }}
-                                >
-                                    Maintenance
-                                </motion.a>
-                                <motion.a 
-                                    href="#services" 
-                                    className="nav-link"
-                                    onClick={closeMenu}
-                                    whileHover={{ x: 10 }}
-                                >
-                                    Services
-                                </motion.a>
-                                <motion.a 
-                                    href="#projects" 
-                                    className="nav-link"
-                                    onClick={closeMenu}
-                                    whileHover={{ x: 10 }}
-                                >
-                                    Projects
-                                </motion.a>
-                                <motion.a 
-                                    href="#contact" 
-                                    className="nav-link contact-btn"
-                                    onClick={closeMenu}
-                                    whileHover={{ scale: 1.05 }}
-                                >
-                                    Contact
-                                </motion.a>
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </div>
-        </nav>
+                    {/* CTA Button */}
+                    <div className="navbar-cta">
+                        {isHome ? (
+                            <a href="#start" className="start-project-btn">Let's Talk</a>
+                        ) : (
+                            <Link to="/#contact" className="start-project-btn">Let's Talk</Link>
+                        )}
+                    </div>
+
+                    {/* Mobile Hamburger */}
+                    <button
+                        className={`hamburger ${isOpen ? 'open' : ''}`}
+                        onClick={toggleMenu}
+                        aria-label="Toggle menu"
+                    >
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </motion.nav>
+
+            {/* Mobile Menu Overlay */}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        className="mobile-menu-overlay"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                    >
+                        <div className="mobile-menu-content">
+                            <Link to="/" onClick={() => setIsOpen(false)}>Home</Link>
+                            {isHome ? (
+                                <>
+                                    <a href="#projects" onClick={() => setIsOpen(false)}>Work</a>
+                                    <a href="#about" onClick={() => setIsOpen(false)}>About</a>
+                                    <a href="#team" onClick={() => setIsOpen(false)}>Team</a>
+                                    <a href="#contact" onClick={() => setIsOpen(false)}>Contact</a>
+                                </>
+                            ) : (
+                                <>
+                                    <Link to="/#projects" onClick={() => setIsOpen(false)}>Work</Link>
+                                    <Link to="/#about" onClick={() => setIsOpen(false)}>About</Link>
+                                    <Link to="/#team" onClick={() => setIsOpen(false)}>Team</Link>
+                                    <Link to="/#contact" onClick={() => setIsOpen(false)}>Contact</Link>
+                                </>
+                            )}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </>
     );
 };
 
-export default Navbar; 
+export default Navbar;

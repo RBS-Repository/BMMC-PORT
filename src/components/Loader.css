@@ -1,241 +1,130 @@
-/* Main loader container */
-.loader-container {
+.premium-loader {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    min-height: 100vh;
-    background: var(--background, #000000);
+    height: 100vh;
+    background: #000;
+    z-index: 100000;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 99999;
 }
 
-.loader-content {
-    position: relative;
+.loader-wrap {
     width: 100%;
-    max-width: 500px;
+    max-width: 1200px;
+    padding: 0 4rem;
+    position: relative;
+    height: 400px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 5rem;
-    padding: 2rem;
+    justify-content: center;
 }
 
-/* Particle animation background */
-.loader-particles {
+.loader-brand-reveal {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.reveal-line {
     position: absolute;
-    top: 0;
+    top: -40px;
     left: 0;
     width: 100%;
-    height: 100%;
-    z-index: -1;
+    height: 2px;
+    background: #fff;
+    transform-origin: left;
+}
+
+.reveal-text-mask {
     overflow: hidden;
-}
-
-.loader-particles::before,
-.loader-particles::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-}
-
-.loader-particles::before {
-    background: radial-gradient(circle at center, 
-                rgba(0, 243, 255, 0.1) 0%, 
-                transparent 70%);
-    animation: pulse 4s ease-in-out infinite;
-}
-
-.loader-particles::after {
-    background-image: 
-        radial-gradient(circle at 15% 75%, rgba(0, 243, 255, 0.1) 0%, transparent 15%),
-        radial-gradient(circle at 85% 25%, rgba(255, 0, 212, 0.05) 0%, transparent 15%),
-        radial-gradient(circle at 50% 50%, rgba(0, 243, 255, 0.05) 0%, transparent 25%);
-}
-
-/* Logo and brand styling */
-.loader-logo {
-    position: relative;
+    height: 12rem;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-}
-
-.logo-circles {
-    position: relative;
-    width: 150px;
-    height: 150px;
-    display: flex;
-    justify-content: center;
     align-items: center;
 }
 
-.circle {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(0, 243, 255, 0.1);
-    border: 2px solid var(--primary, #00f3ff);
-}
-
-.circle-1 {
-    width: 150px;
-    height: 150px;
-    opacity: 0.3;
-    animation: rotateClockwise 8s linear infinite;
-}
-
-.circle-2 {
-    width: 110px;
-    height: 110px;
-    opacity: 0.5;
-    animation: rotateCounterClockwise 6s linear infinite;
-}
-
-.circle-3 {
-    width: 70px;
-    height: 70px;
-    opacity: 0.8;
-    animation: rotateClockwise 4s linear infinite;
-}
-
-.logo-text {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-}
-
-.logo-letter {
-    display: inline-block;
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--primary, #00f3ff);
-    text-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
-    letter-spacing: 2px;
-}
-
-/* Progress bar */
-.loader-progress-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-}
-
-.loader-progress-bar {
-    width: 0%;
-    height: 4px;
-    background: linear-gradient(
-        90deg,
-        rgba(0, 243, 255, 0.5),
-        var(--primary, #00f3ff)
-    );
-    border-radius: 4px;
-    box-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
-    align-self: flex-start;
-}
-
-.loader-status {
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.7);
-    letter-spacing: 2px;
+.reveal-text-mask h1 {
+    font-size: 15rem;
+    font-family: 'Oswald', sans-serif;
+    line-height: 1;
+    margin: 0;
+    letter-spacing: -0.05em;
+    color: #fff;
     text-transform: uppercase;
-    font-weight: 300;
 }
 
-/* Animations */
-@keyframes rotateClockwise {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+.reveal-sub-mask {
+    overflow: hidden;
+    height: 2rem;
+    margin-top: 1rem;
 }
 
-@keyframes rotateCounterClockwise {
-    from { transform: rotate(360deg); }
-    to { transform: rotate(0deg); }
+.reveal-sub-mask p {
+    font-size: 0.9rem;
+    letter-spacing: 5px;
+    color: #666;
+    margin: 0;
+    text-transform: uppercase;
 }
 
-@keyframes pulse {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.05); }
+.loader-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 4rem;
+    right: 4rem;
 }
 
-/* Responsive adjustments */
+.loading-counter {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 1rem;
+}
+
+.counter-bar {
+    height: 100%;
+    background: #fff;
+}
+
+.loading-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: #444;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 1024px) {
+    .reveal-text-mask {
+        height: 8rem;
+    }
+
+    .reveal-text-mask h1 {
+        font-size: 10rem;
+    }
+}
+
 @media (max-width: 768px) {
-    .loader-content {
-        gap: 3rem;
+    .loader-wrap {
+        padding: 0 2rem;
     }
-    
-    .logo-circles {
-        width: 120px;
-        height: 120px;
+
+    .loader-bottom {
+        left: 2rem;
+        right: 2rem;
     }
-    
-    .circle-1 {
-        width: 120px;
-        height: 120px;
+
+    .reveal-text-mask {
+        height: 5rem;
     }
-    
-    .circle-2 {
-        width: 90px;
-        height: 90px;
+
+    .reveal-text-mask h1 {
+        font-size: 6rem;
     }
-    
-    .circle-3 {
-        width: 60px;
-        height: 60px;
-    }
-    
-    .logo-letter {
-        font-size: 2rem;
+
+    .reveal-sub-mask p {
+        font-size: 0.7rem;
+        letter-spacing: 2px;
     }
 }
-
-/* Small mobile devices */
-@media (max-width: 480px) {
-    .loader-content {
-        gap: 2.5rem;
-    }
-    
-    .logo-circles {
-        width: 100px;
-        height: 100px;
-    }
-    
-    .circle-1 {
-        width: 100px;
-        height: 100px;
-    }
-    
-    .circle-2 {
-        width: 75px;
-        height: 75px;
-    }
-    
-    .circle-3 {
-        width: 50px;
-        height: 50px;
-    }
-    
-    .logo-letter {
-        font-size: 1.75rem;
-    }
-    
-    .loader-status {
-        font-size: 0.85rem;
-    }
-}
-
-/* Fix for viewport height on mobile */
-@media screen and (max-width: 768px) {
-    .loader-container {
-        min-height: -webkit-fill-available;
-    }
-} 
