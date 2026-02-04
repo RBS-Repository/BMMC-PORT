@@ -34,27 +34,21 @@ body {
     /* Reset any potential flex/grid centering from previous templates */
 }
 
-/* Ensure Lenis works */
-html.lenis,
-html.lenis body {
-    height: auto;
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-.lenis.lenis-smooth {
-    scroll-behavior: auto !important;
+body {
+    overflow-x: hidden;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+    /* Momentum scroll for older iOS */
 }
 
-.lenis.lenis-smooth [data-lenis-prevent] {
-    overscroll-behavior: auto;
-}
-
-.lenis.lenis-stopped {
-    overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-    pointer-events: none;
-}
 
 h1,
 h2,

@@ -25,15 +25,17 @@ import { motion } from 'framer-motion';
 import Lenis from 'lenis';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
-// Optimized Reveal Component
 const RevealOnScroll = ({ children }) => {
+    // Disable reveal transformation on mobile for better scroll stability
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+
     return (
         <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={isMobile ? { opacity: 0 } : { opacity: 0, y: 30 }}
+            whileInView={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            style={{ willChange: "transform, opacity" }} // Hardware acceleration hint
+            style={{ willChange: "opacity" }}
         >
             {children}
         </motion.div>
@@ -67,14 +69,16 @@ const App = () => {
     const location = useLocation();
 
     useEffect(() => {
-        // Initialize Lenis Smooth Scroll
+        // Only initialize Lenis on non-touch devices for better mobile performance
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+        if (isTouchDevice) return;
+
         const lenis = new Lenis({
-            duration: 1, // Shorter duration for snappier feel
+            duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            touchMultiplier: 1.5,
             infinite: false,
             smoothWheel: true,
-            smoothTouch: false,
         });
 
         function raf(time) {
@@ -91,10 +95,9 @@ const App = () => {
 
     useEffect(() => {
         const handleLoad = () => {
-            const timer = setTimeout(() => {
+            setTimeout(() => {
                 setIsLoading(false);
-            }, 2000);
-            return () => clearTimeout(timer);
+            }, 1500);
         };
 
         if (document.readyState === 'complete') {
@@ -103,12 +106,12 @@ const App = () => {
             window.addEventListener('load', handleLoad);
             return () => window.removeEventListener('load', handleLoad);
         }
-    }, []);
+    }, [location.pathname]); // Re-sync on path change to ensure state stability
 
-    // Scroll to top on route change
+    // Reset scroll on route change
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, [location]);
+    }, [location.pathname]);
 
     return (
         <>
