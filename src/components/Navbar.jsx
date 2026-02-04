@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
+import ContactModal from './ContactModal';
 import './Navbar.css';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const location = useLocation();
     const isHome = location.pathname === '/';
 
@@ -61,11 +63,12 @@ const Navbar = () => {
 
                     {/* CTA Button */}
                     <div className="navbar-cta">
-                        {isHome ? (
-                            <a href="#start" className="start-project-btn">Let's Talk</a>
-                        ) : (
-                            <Link to="/#contact" className="start-project-btn">Let's Talk</Link>
-                        )}
+                        <button
+                            className="start-project-btn"
+                            onClick={() => setIsModalOpen(true)}
+                        >
+                            Let's Talk
+                        </button>
                     </div>
 
                     {/* Mobile Hamburger */}
@@ -106,10 +109,25 @@ const Navbar = () => {
                                     <Link to="/#contact" onClick={() => setIsOpen(false)}>Contact</Link>
                                 </>
                             )}
+                            <button
+                                className="mobile-cta-btn"
+                                onClick={() => {
+                                    setIsOpen(false);
+                                    setIsModalOpen(true);
+                                }}
+                            >
+                                Let's Talk
+                            </button>
                         </div>
                     </motion.div>
                 )}
             </AnimatePresence>
+
+            {/* Global Contact Modal */}
+            <ContactModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+            />
         </>
     );
 };

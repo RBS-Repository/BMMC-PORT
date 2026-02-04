@@ -54,7 +54,7 @@ const Contact = () => {
                     {/* Email Block */}
                     <div className="bento-item info-block email">
                         <span className="info-label">Email us</span>
-                        <a href="mailto:budaquecreations@gmail.com" className="info-value">budaquecreations@gmail.com</a>
+                        <a href="mailto:budaquecreations@gmail.com" className="info-value">budaquecreations@googlemail.com</a>
                     </div>
 
                     {/* Phone Block */}

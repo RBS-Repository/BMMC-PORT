@@ -31,7 +31,7 @@ const RevealOnScroll = ({ children }) => {
         <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             style={{ willChange: "transform, opacity" }} // Hardware acceleration hint
         >
@@ -69,14 +69,12 @@ const App = () => {
     useEffect(() => {
         // Initialize Lenis Smooth Scroll
         const lenis = new Lenis({
-            duration: 1.2,
+            duration: 1, // Shorter duration for snappier feel
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            direction: 'vertical',
-            gestureDirection: 'vertical',
-            smooth: true,
-            mouseMultiplier: 1,
+            touchMultiplier: 1.5,
+            infinite: false,
+            smoothWheel: true,
             smoothTouch: false,
-            touchMultiplier: 2,
         });
 
         function raf(time) {
