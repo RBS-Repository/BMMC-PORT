@@ -201,7 +201,7 @@ const AllProjects = () => {
                                         <img src={project.image} alt={project.title} />
                                         <div className="card-hover-overlay">
                                             <a href={project.link} target="_blank" rel="noopener noreferrer" className="visit-btn">
-                                                Visit Live
+                                                <span>Visit Live</span>
                                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M5 15L15 5M15 5H5M15 5V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                                 </svg>

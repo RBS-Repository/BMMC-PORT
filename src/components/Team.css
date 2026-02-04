@@ -86,4 +86,32 @@
     line-height: 1.6;
     font-size: 0.95rem;
     max-width: 90%;
+    margin-bottom: 1.5rem;
+}
+
+.member-portfolio-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.6;
+    transition: opacity 0.3s ease, gap 0.3s ease;
+}
+
+.member-portfolio-btn:hover {
+    opacity: 1;
+    gap: 0.8rem;
+}
+
+.member-portfolio-btn svg {
+    transition: transform 0.3s ease;
+}
+
+.member-portfolio-btn:hover svg {
+    transform: rotate(45deg);
 }

@@ -31,7 +31,7 @@
 }
 
 .premium-title {
-    font-size: clamp(3.5rem, 10vw, 8rem);
+    font-size: clamp(3rem, 10vw, 8rem);
     font-family: 'Oswald', sans-serif;
     font-weight: 400;
     line-height: 0.85;
@@ -212,10 +212,25 @@
         align-items: flex-start;
         gap: 3rem;
     }
+
+    .premium-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .premium-card,
+    .premium-card.large,
+    .premium-card.small {
+        grid-column: span 1;
+    }
+
+    .premium-container {
+        padding: 0 2rem;
+    }
 }
 
 .card-info h3 {
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
     margin: 0;
     font-weight: 400;
     letter-spacing: -1px;
@@ -223,8 +238,9 @@
 
 .card-info p {
     color: #888;
-    max-width: 90%;
+    max-width: 100%;
     line-height: 1.6;
+    font-size: 0.95rem;
 }
 
 .premium-footer {
@@ -266,56 +282,89 @@
     transform: translateX(20px);
 }
 
-@media (max-width: 1200px) {
-    .premium-title {
-        font-size: 6rem;
-    }
-
-    .premium-grid {
-        gap: 2rem;
-    }
-}
-
-@media (max-width: 1024px) {
-    .premium-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-    }
-
-    .premium-card,
-    .premium-card.large {
-        grid-column: span 1;
-    }
-
-    .premium-container {
-        padding: 0 2rem;
-    }
-}
-
 @media (max-width: 768px) {
+    .projects-premium-section {
+        padding: 100px 0;
+    }
+
     .premium-header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 2rem;
+        gap: 1.5rem;
+        margin-bottom: 4rem;
     }
 
     .premium-title {
         text-align: left;
-        font-size: 4rem;
+        font-size: 3.2rem;
         letter-spacing: -2px;
     }
 
-    .premium-card,
-    .premium-card.large {
-        grid-column: span 12;
+    .premium-grid {
+        grid-template-columns: 1fr;
+        gap: 4rem;
     }
 
-    .link-text {
+    .premium-card,
+    .premium-card.large,
+    .premium-card.small {
+        grid-column: span 1;
+    }
+
+    .image-box {
+        aspect-ratio: 16/10;
+        filter: none;
+    }
+
+    .large .image-box {
+        aspect-ratio: 16/10;
+    }
+
+    .image-box img {
+        filter: none;
+    }
+
+    .card-info h3 {
         font-size: 2rem;
     }
 
+    .card-hover-overlay {
+        position: relative;
+        opacity: 1;
+        background: transparent;
+        backdrop-filter: none;
+        display: block;
+        height: auto;
+        padding: 1.5rem 0 0.5rem;
+        inset: auto;
+    }
+
+    .visit-btn {
+        padding: 1rem 1.8rem;
+        font-size: 0.9rem;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .link-text {
+        font-size: 1.8rem;
+    }
+
     .link-arrow {
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .filter-minimal {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .filter-text-btn {
+        font-size: 0.8rem;
     }
 }
