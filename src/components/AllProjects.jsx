@@ -40,7 +40,7 @@ const AllProjects = () => {
             tech: ["Vue.js", "AWS", "Python"],
             image: "/project2.png",
             category: 'Web',
-            link: "https://www.himari.io/",
+            link: "https://himari-ai.vercel.app/overview",
         },
         {
             title: "Fear of God",

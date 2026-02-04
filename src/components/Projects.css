@@ -312,15 +312,18 @@
     }
 
     .image-box {
-        aspect-ratio: 16/10;
+        aspect-ratio: auto;
+        /* Let it grow */
+        overflow: visible;
+        /* Prevent clipping of the button */
         filter: none;
     }
 
-    .large .image-box {
-        aspect-ratio: 16/10;
-    }
-
     .image-box img {
+        aspect-ratio: 16/10;
+        width: 100%;
+        height: auto;
+        display: block;
         filter: none;
     }
 
@@ -330,24 +333,35 @@
 
     .card-hover-overlay {
         position: relative;
-        opacity: 1;
+        opacity: 1 !important;
         background: transparent;
         backdrop-filter: none;
         display: block;
         height: auto;
-        padding: 1.5rem 0 0.5rem;
+        padding: 1rem 0;
         inset: auto;
+        z-index: 10;
+        /* Ensure it's above other elements */
+        pointer-events: auto;
+        /* Explicitly enable clicks */
     }
 
     .visit-btn {
-        padding: 1rem 1.8rem;
-        font-size: 0.9rem;
+        position: relative;
+        z-index: 50;
+        /* High z-index to stay above everything in the card */
+        pointer-events: auto !important;
+        /* Ensure it's clickable */
+        padding: 1.2rem 1.8rem;
+        font-size: 0.95rem;
         width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 12px;
+        color: white;
     }
 
     .link-text {
