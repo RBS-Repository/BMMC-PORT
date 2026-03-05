@@ -184,40 +184,49 @@ const AllProjects = () => {
                     </div>
                 </div>
 
-                <div className="premium-grid">
+                <div className="projects-grid-refined">
                     <AnimatePresence mode="popLayout">
                         {filteredProjects.map((project, index) => (
-                            <motion.div
+                            <motion.a
                                 layout
                                 key={project.title}
-                                className={`premium-card ${index % 4 === 0 ? 'large' : 'small'}`}
+                                href={project.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="refined-project-card"
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.95 }}
                                 transition={{ duration: 0.6 }}
                             >
-                                <div className="card-inner">
-                                    <div className="image-box">
-                                        <img src={project.image} alt={project.title} />
-                                        <div className="card-hover-overlay">
-                                            <a href={project.link} target="_blank" rel="noopener noreferrer" className="visit-btn">
-                                                <span>Visit Live</span>
-                                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M5 15L15 5M15 5H5M15 5V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                                </svg>
-                                            </a>
-                                        </div>
+                                <div className="project-card-inner">
+                                    <div className="project-image-container">
+                                        <img src={project.image} alt={project.title} className="project-image" loading="lazy" />
+                                        <div className="project-category-badge">{project.category}</div>
                                     </div>
-                                    <div className="card-info">
-                                        <div className="info-top">
-                                            <span className="info-cat">{project.category}</span>
-                                            <span className="info-index">{index < 9 ? `0${index + 1}` : index + 1}</span>
+                                    <div className="project-content">
+                                        <div className="project-meta">
+                                            <span className="project-index">0{index + 1}</span>
+                                            <div className="project-tech-stack">
+                                                {project.tech.map((t, i) => (
+                                                    <span key={i} className="tech-tag">{t}</span>
+                                                ))}
+                                            </div>
                                         </div>
-                                        <h3>{project.title}</h3>
-                                        <p>{project.description}</p>
+                                        <h3 className="project-display-title">{project.title}</h3>
+                                        <p className="project-display-description">{project.description}</p>
+                                    </div>
+                                    <div className="project-card-overlay">
+                                        <div className="project-link-cta">
+                                            <span>View Project</span>
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                                <line x1="7" y1="17" x2="17" y2="7"></line>
+                                                <polyline points="7 7 17 7 17 17"></polyline>
+                                            </svg>
+                                        </div>
                                     </div>
                                 </div>
-                            </motion.div>
+                            </motion.a>
                         ))}
                     </AnimatePresence>
                 </div>

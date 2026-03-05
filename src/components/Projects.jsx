@@ -1,9 +1,73 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import './Projects.css';
 
+const ProjectCard = ({ project, index }) => {
+    return (
+        <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="refined-project-card horizontal-slide"
+        >
+            <div className="project-card-inner">
+                <div className="project-image-container">
+                    <img
+                        src={project.image}
+                        alt={project.title}
+                        className="project-image"
+                        loading="lazy"
+                    />
+                    <div className="project-category-badge">{project.category}</div>
+                </div>
+                <div className="project-content">
+                    <div className="project-meta">
+                        <span className="project-index">0{index + 1}</span>
+                        <div className="project-tech-stack">
+                            {project.tech.map((t, i) => (
+                                <span key={i} className="tech-tag">{t}</span>
+                            ))}
+                        </div>
+                    </div>
+                    <h3 className="project-display-title">{project.title}</h3>
+                    <p className="project-display-description">{project.description}</p>
+                </div>
+                <div className="project-card-overlay">
+                    <div className="project-link-cta">
+                        <span>View Project</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </a>
+    );
+};
+
 const Projects = () => {
+    const triggerRef = React.useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: triggerRef,
+        offset: ["start start", "end end"]
+    });
+
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 1024);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    // Horizontal movement intensity
+    const x = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
+
     const projects = [
         {
             title: "Jasmine AI Beta",
@@ -21,8 +85,6 @@ const Projects = () => {
             category: 'Web',
             link: "https://www.dandelionchocolate.com/",
         },
-
-
         {
             title: "Memecoin Web3",
             description: "A cryptocurrency platform designed for meme enthusiasts",
@@ -74,60 +136,44 @@ const Projects = () => {
     ];
 
     return (
-        <section className="projects-premium-section" id="projects">
-            <div className="premium-container">
-                <div className="premium-header">
-                    <div className="header-labels">
-                        <span>Selected Work</span>
-                        <span>/ 2024 — 2026</span>
-                    </div>
-                    <h2 className="premium-title">Digital <br /> Craftsmanship</h2>
-                </div>
-
-                <div className="premium-grid">
-                    {projects.map((project, index) => (
+        <section className="horizontal-scroll-root" ref={triggerRef}>
+            <div className={`sticky-wrapper ${isMobile ? 'mobile-vertical' : ''}`}>
+                <div className="premium-header horizontal-header">
+                    <div className="premium-container">
                         <motion.div
-                            key={index}
-                            className={`premium-card ${index % 3 === 0 ? 'large' : 'small'}`}
+                            className="header-content"
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.8, delay: index * 0.1 }}
+                            transition={{ duration: 0.8 }}
                         >
-                            <div className="card-inner">
-                                <div className="image-box">
-                                    <img src={project.image} alt={project.title} />
-                                    <div className="card-hover-overlay">
-                                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="visit-btn">
-                                            <span>Visit Live</span>
-                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M5 15L15 5M15 5H5M15 5V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div className="card-info">
-                                    <div className="info-top">
-                                        <span className="info-cat">{project.category}</span>
-                                        <span className="info-index">0{index + 1}</span>
-                                    </div>
-                                    <h3>{project.title}</h3>
-                                    <p>{project.description}</p>
-                                </div>
-                            </div>
+                            <span className="section-subtitle">Selected Work</span>
+                            <h2 className="premium-title">Featured Projects</h2>
                         </motion.div>
-                    ))}
+                    </div>
                 </div>
 
-                <div className="premium-footer">
-                    <Link to="/all-projects" className="explore-all-link">
-                        <span className="link-text">Explore All Projects</span>
-                        <div className="link-arrow">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </div>
-                    </Link>
+                <div className="horizontal-track-container">
+                    <motion.div
+                        className="projects-horizontal-track"
+                        style={isMobile ? {} : { x }}
+                    >
+                        {projects.map((project, index) => (
+                            <ProjectCard key={index} project={project} index={index} />
+                        ))}
+
+                        {/* View Full Archive Slide */}
+                        <Link to="/all-projects" className="refined-project-card archive-slide">
+                            <div className="archive-slide-content">
+                                <span className="archive-label">View Full Archive</span>
+                                <div className="archive-arrow">
+                                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                        <path d="M5 12H19M19 12L12 5M19 12L12 19" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </Link>
+                    </motion.div>
                 </div>
             </div>
         </section>

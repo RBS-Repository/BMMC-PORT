@@ -21,21 +21,53 @@ import CaseStudies from './components/CaseStudies';
 import Footer from './components/Footer';
 import AIServices from './components/AIServices';
 import Maintenance from './components/Maintenance';
-import { motion } from 'framer-motion';
-import Lenis from 'lenis';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+// Import official React Lenis wrapper
+import { ReactLenis } from 'lenis/react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
 const RevealOnScroll = ({ children }) => {
-    // Disable reveal transformation on mobile for better scroll stability
+    const targetRef = React.useRef(null);
     const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+
+    const { scrollYProgress } = useScroll({
+        target: targetRef,
+        offset: ["start end", "end start"]
+    });
+
+    // Desktop unique animations: Dynamic scale, opacity and vertical parallax
+    const scale = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0.93, 1, 1, 0.93]);
+    const opacity = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0, 1, 1, 0]);
+    const y = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [50, 0, 0, -50]);
+
+    // Use spring for smoother interpolation
+    const smoothScale = useSpring(scale, { stiffness: 100, damping: 30, restDelta: 0.001 });
+    const smoothY = useSpring(y, { stiffness: 100, damping: 30, restDelta: 0.001 });
+
+    if (isMobile) {
+        return (
+            <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                style={{ width: "100%" }}
+            >
+                {children}
+            </motion.div>
+        );
+    }
 
     return (
         <motion.div
-            initial={isMobile ? { opacity: 0 } : { opacity: 0, y: 30 }}
-            whileInView={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-20px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            style={{ willChange: "opacity" }}
+            ref={targetRef}
+            style={{
+                scale: smoothScale,
+                opacity,
+                y: smoothY,
+                willChange: "transform, opacity",
+                width: "100%"
+            }}
         >
             {children}
         </motion.div>
@@ -46,7 +78,8 @@ const Home = () => (
     <>
         <RevealOnScroll><Hero /></RevealOnScroll>
         <RevealOnScroll><Marquee /></RevealOnScroll>
-        <RevealOnScroll><Projects /></RevealOnScroll>
+        {/* Projects section explicitly not wrapped in RevealOnScroll to preserve its horizontal scroll animation */}
+        <Projects />
         <RevealOnScroll><AIServices /></RevealOnScroll>
         <RevealOnScroll><Maintenance /></RevealOnScroll>
         <RevealOnScroll><Team /></RevealOnScroll>
@@ -69,35 +102,10 @@ const App = () => {
     const location = useLocation();
 
     useEffect(() => {
-        // Only initialize Lenis on non-touch devices for better mobile performance
-        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
-        if (isTouchDevice) return;
-
-        const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            infinite: false,
-            smoothWheel: true,
-        });
-
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-
-        requestAnimationFrame(raf);
-
-        return () => {
-            lenis.destroy();
-        };
-    }, []);
-
-    useEffect(() => {
         const handleLoad = () => {
             setTimeout(() => {
                 setIsLoading(false);
-            }, 1500);
+            }, 1000);
         };
 
         if (document.readyState === 'complete') {
@@ -106,7 +114,7 @@ const App = () => {
             window.addEventListener('load', handleLoad);
             return () => window.removeEventListener('load', handleLoad);
         }
-    }, [location.pathname]); // Re-sync on path change to ensure state stability
+    }, [location.pathname]);
 
     // Reset scroll on route change
     useEffect(() => {
@@ -114,7 +122,7 @@ const App = () => {
     }, [location.pathname]);
 
     return (
-        <>
+        <ReactLenis root options={{ lerp: 0.08, smoothWheel: true, touchMultiplier: 2 }}>
             {isLoading ? (
                 <Loader />
             ) : (
@@ -130,7 +138,7 @@ const App = () => {
                     </div>
                 </div>
             )}
-        </>
+        </ReactLenis>
     );
 };
 
