@@ -6,57 +6,88 @@ const Hero = () => {
     const containerRef = useRef(null);
     const { scrollY } = useScroll();
 
-    // Parallax effect for the background
-    const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-    const y2 = useTransform(scrollY, [0, 500], [0, -150]);
+    // Advanced dynamic transformations
+    const y1 = useTransform(scrollY, [0, 500], [0, 180]);
+    const y2 = useTransform(scrollY, [0, 500], [0, -120]);
+    const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+    const scale = useTransform(scrollY, [0, 300], [1, 0.9]);
+    const blur = useTransform(scrollY, [0, 300], [0, 10]);
+
+    const titleVariants = {
+        hidden: { opacity: 0, scale: 0.8, filter: "blur(20px)" },
+        visible: (i) => ({
+            opacity: 1,
+            scale: 1,
+            filter: "blur(0px)",
+            transition: {
+                delay: 0.2 + (i * 0.15),
+                duration: 1.5,
+                ease: [0.22, 1, 0.36, 1]
+            }
+        })
+    };
 
     return (
         <section className="hero-container" ref={containerRef}>
-            <div className="aurora-background">
+            <motion.div
+                className="aurora-background"
+                style={{ opacity, scale, filter: `blur(${blur}px)` }}
+            >
                 <div className="aurora-blob blob-1"></div>
                 <div className="aurora-blob blob-2"></div>
                 <div className="aurora-blob blob-3"></div>
-            </div>
+            </motion.div>
 
             <div className="noise-overlay"></div>
 
-            <div className="hero-content">
-                <motion.div
-                    className="hero-header"
-                    initial={{ opacity: 0, y: 100 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                >
-                    <div className="hero-label">
+            <motion.div
+                className="hero-content"
+                style={{ y: useTransform(scrollY, [0, 500], [0, 100]) }}
+            >
+                <div className="hero-header">
+                    <motion.div
+                        className="hero-label"
+                        initial={{ opacity: 0, x: -30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 1.2 }}
+                    >
                         <span className="label-line"></span>
                         <span className="label-text">EST. 2025</span>
-                    </div>
+                    </motion.div>
 
                     <h1 className="hero-title">
-                        <span className="title-row">
+                        <span className="title-row overflow-hidden">
                             <motion.span
-                                className="outline-text"
+                                className="outline-text block"
+                                variants={titleVariants}
+                                initial="hidden"
+                                animate="visible"
+                                custom={0}
                                 style={{ x: y2 }}
                             >
                                 DIGITAL
                             </motion.span>
                         </span>
-                        <span className="title-row">
+                        <span className="title-row overflow-hidden">
                             <motion.span
-                                className="filled-text"
+                                className="filled-text block"
+                                variants={titleVariants}
+                                initial="hidden"
+                                animate="visible"
+                                custom={1}
                                 style={{ x: y1 }}
                             >
                                 ALCHEMIST
                             </motion.span>
                         </span>
                     </h1>
-                </motion.div>
+                </div>
 
                 <motion.div
                     className="hero-footer"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5, duration: 1 }}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1, duration: 1.2 }}
                 >
                     <div className="hero-description">
                         <p>Crafting immersive digital experiences through code, design, and innovation.</p>
@@ -64,12 +95,21 @@ const Hero = () => {
 
                     <div className="hero-cta">
                         <a href="#projects" className="circle-btn">
-                            <span className="btn-text">VIEW<br />WORK</span>
+                            <motion.span
+                                className="btn-text"
+                                animate={{
+                                    y: [0, -10, 0],
+                                    rotate: [0, 2, -2, 0]
+                                }}
+                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                            >
+                                VIEW<br />WORK
+                            </motion.span>
                             <div className="btn-border"></div>
                         </a>
                     </div>
                 </motion.div>
-            </div>
+            </motion.div>
         </section>
     );
 };

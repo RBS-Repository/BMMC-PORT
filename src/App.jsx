@@ -21,36 +21,54 @@ import CaseStudies from './components/CaseStudies';
 import Footer from './components/Footer';
 import AIServices from './components/AIServices';
 import Maintenance from './components/Maintenance';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring, useVelocity } from 'framer-motion';
 // Import official React Lenis wrapper
 import { ReactLenis } from 'lenis/react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
+const ScrollProgress = () => {
+    const { scrollYProgress } = useScroll();
+    const scaleX = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    });
+
+    return (
+        <motion.div
+            className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 origin-left z-[9999]"
+            style={{ scaleX }}
+        />
+    );
+};
+
 const RevealOnScroll = ({ children }) => {
     const targetRef = React.useRef(null);
-    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
-
     const { scrollYProgress } = useScroll({
         target: targetRef,
         offset: ["start end", "end start"]
     });
 
-    // Desktop unique animations: Dynamic scale, opacity and vertical parallax
-    const scale = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0.93, 1, 1, 0.93]);
-    const opacity = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0, 1, 1, 0]);
-    const y = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [50, 0, 0, -50]);
+    // Cinematic transforms
+    const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+    const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.8, 1, 1, 0.8]);
+    const rotateX = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [5, 0, 0, -5]);
+    const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [100, 0, 0, -100]);
 
-    // Use spring for smoother interpolation
-    const smoothScale = useSpring(scale, { stiffness: 100, damping: 30, restDelta: 0.001 });
-    const smoothY = useSpring(y, { stiffness: 100, damping: 30, restDelta: 0.001 });
+    // Spring smoothed values
+    const smoothScale = useSpring(scale, { stiffness: 100, damping: 30 });
+    const smoothY = useSpring(y, { stiffness: 100, damping: 30 });
+    const smoothRotate = useSpring(rotateX, { stiffness: 100, damping: 30 });
+
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
 
     if (isMobile) {
         return (
             <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                transition={{ duration: 0.8 }}
                 style={{ width: "100%" }}
             >
                 {children}
@@ -59,26 +77,30 @@ const RevealOnScroll = ({ children }) => {
     }
 
     return (
-        <motion.div
-            ref={targetRef}
-            style={{
-                scale: smoothScale,
-                opacity,
-                y: smoothY,
-                willChange: "transform, opacity",
-                width: "100%"
-            }}
-        >
-            {children}
-        </motion.div>
+        <div ref={targetRef} style={{ perspective: "1200px", width: "100%", overflow: "visible" }}>
+            <motion.div
+                style={{
+                    opacity,
+                    scale: smoothScale,
+                    y: smoothY,
+                    rotateX: smoothRotate,
+                    transformOrigin: "center center",
+                    willChange: "transform, opacity",
+                    width: "100%"
+                }}
+            >
+                {children}
+            </motion.div>
+        </div>
     );
 };
 
 const Home = () => (
     <>
+        <ScrollProgress />
         <RevealOnScroll><Hero /></RevealOnScroll>
         <RevealOnScroll><Marquee /></RevealOnScroll>
-        {/* Projects section explicitly not wrapped in RevealOnScroll to preserve its horizontal scroll animation */}
+        {/* Projects section preserved with its unique horizontal animation */}
         <Projects />
         <RevealOnScroll><AIServices /></RevealOnScroll>
         <RevealOnScroll><Maintenance /></RevealOnScroll>
