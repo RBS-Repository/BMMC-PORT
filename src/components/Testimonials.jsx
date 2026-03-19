@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { TestimonialCard } from './ui/testimonial-cards';
 import './Testimonials.css';
 
 const Testimonials = () => {
@@ -27,38 +28,43 @@ const Testimonials = () => {
             role: "IT Director",
             text: "I was impressed by the clean code and performance optimizations. The website loads incredibly fast.",
             company: "DataPlus"
+        },
+        {
+            name: "David asasWong",
+            role: "IT Director",
+            text: "I was impressed by the clean code and performance optimizations. The website loads incredibly fast.",
+            company: "DataPlus"
         }
     ];
+
+    const [positions, setPositions] = useState(['front', 'middle', 'back', 'back2']);
+
+    const handleShuffle = () => {
+        const newPositions = [...positions];
+        newPositions.unshift(newPositions.pop());
+        setPositions(newPositions);
+    };
 
     return (
         <section className="testimonials-modern" id="testimonials">
             <div className="modern-t-container">
                 <div className="t-grid-layout">
                     <div className="t-header-block">
-                        <span className="t-label">Testimonials</span>
+                        <span className="t-label">Testimonials / 05</span>
                         <h2 className="t-main-title">Voice of <br /> Our Partners</h2>
+                        <div className="t-line"></div>
                         <p className="t-lead">We build relationships, not just interfaces. Here is what they say about our craft.</p>
                     </div>
 
-                    <div className="t-reviews-stream">
+                    <div className="relative w-full max-w-[450px] h-[550px] mx-auto lg:mx-0">
                         {reviews.map((item, index) => (
-                            <motion.div
+                            <TestimonialCard
                                 key={index}
-                                className="t-review-card"
-                                initial={{ opacity: 0, x: 50 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.8, delay: index * 0.2 }}
-                            >
-                                <div className="t-card-accent"></div>
-                                <p className="t-text">"{item.text}"</p>
-                                <div className="t-author">
-                                    <div className="t-author-info">
-                                        <h4>{item.name}</h4>
-                                        <p>{item.role} @ {item.company}</p>
-                                    </div>
-                                </div>
-                            </motion.div>
+                                item={item}
+                                testimonial={item.text}
+                                handleShuffle={handleShuffle}
+                                position={positions[index]}
+                            />
                         ))}
                     </div>
                 </div>

@@ -23,7 +23,7 @@ import AIServices from './components/AIServices';
 import Maintenance from './components/Maintenance';
 import { motion, useScroll, useTransform, useSpring, useVelocity } from 'framer-motion';
 // Import official React Lenis wrapper
-import { ReactLenis } from 'lenis/react';
+import { ReactLenis, useLenis } from 'lenis/react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
 const ScrollProgress = () => {
@@ -138,10 +138,22 @@ const App = () => {
         }
     }, [location.pathname]);
 
-    // Reset scroll on route change
+    const lenis = useLenis();
+
+    // Reset scroll on route change (only if no hash)
     useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [location.pathname]);
+        if (!location.hash) {
+            window.scrollTo(0, 0);
+        } else {
+            // Give a small timeout for content to render if navigating from another page
+            setTimeout(() => {
+                const element = document.querySelector(location.hash);
+                if (element && lenis) {
+                    lenis.scrollTo(element);
+                }
+            }, 100);
+        }
+    }, [location.pathname, location.hash, lenis]);
 
     return (
         <ReactLenis root options={{ lerp: 0.08, smoothWheel: true, touchMultiplier: 2 }}>

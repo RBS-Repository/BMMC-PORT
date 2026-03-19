@@ -136,7 +136,7 @@ const Projects = () => {
     ];
 
     return (
-        <section className="horizontal-scroll-root" ref={triggerRef}>
+        <section className="horizontal-scroll-root" id="projects" ref={triggerRef}>
             <div className={`sticky-wrapper ${isMobile ? 'mobile-vertical' : ''}`}>
                 <div className="premium-header horizontal-header">
                     <div className="premium-container">

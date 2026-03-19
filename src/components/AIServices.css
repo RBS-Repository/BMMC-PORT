@@ -44,31 +44,29 @@
 .ai-p-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    gap: 1.5rem;
+    /* changed from 1px to 1.5rem so rounded cards have spacing */
+    background: transparent;
+    border: none;
 }
 
 .ai-p-card {
     background: #050505;
     padding: 4rem;
     position: relative;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: background 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
-    height: 350px;
+    min-height: 350px;
+    height: 100%;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+    /* prevents glow from bleeding out */
 }
 
 .ai-p-card:hover {
     background: #0a0a0a;
-}
-
-.card-num {
-    font-size: 0.8rem;
-    color: #444;
-    margin-bottom: 3rem;
-    font-family: 'Inter', sans-serif;
-    letter-spacing: 1px;
 }
 
 .card-main h3 {
@@ -101,27 +99,14 @@
 }
 
 @media (max-width: 1200px) {
-    .ai-p-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
     .ai-p-title {
         font-size: 4.5rem;
     }
 }
 
 @media (max-width: 768px) {
-    .ai-p-grid {
-        grid-template-columns: 1fr;
-    }
-
     .ai-p-title {
         font-size: 3.5rem;
-    }
-
-    .ai-p-card {
-        padding: 3rem;
-        height: auto;
     }
 
     .ai-p-container {

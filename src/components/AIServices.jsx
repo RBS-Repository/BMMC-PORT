@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { GlowingEffect } from './ui/glowing-effect';
 import './AIServices.css';
 
 const AIServices = () => {
@@ -42,7 +43,7 @@ const AIServices = () => {
                     {services.map((s, i) => (
                         <motion.div
                             key={i}
-                            className="ai-p-card"
+                            className="relative min-h-[350px] list-none rounded-[1.25rem] border-[1px] border-white/5 p-2 lg:p-3"
                             style={{
                                 y: i % 2 === 0 ? cardY : useTransform(scrollYProgress, [0, 1], [-30, 30]),
                                 rotateX: cardRotate,
@@ -53,12 +54,22 @@ const AIServices = () => {
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ duration: 0.8, delay: i * 0.05 }}
                         >
-                            <span className="card-num">{s.num}</span>
-                            <div className="card-main">
-                                <h3>{s.title}</h3>
-                                <p>{s.desc}</p>
+                            <GlowingEffect
+                                spread={40}
+                                glow={true}
+                                disabled={false}
+                                proximity={64}
+                                inactiveZone={0.01}
+                                borderWidth={3}
+                            />
+                            <div className="ai-p-card relative z-10 w-full h-full">
+                                <span className="card-num">{s.num}</span>
+                                <div className="card-main">
+                                    <h3>{s.title}</h3>
+                                    <p>{s.desc}</p>
+                                </div>
+                                <div className="card-accent"></div>
                             </div>
-                            <div className="card-accent"></div>
                         </motion.div>
                     ))}
                 </div>

@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { FloatingPaths } from './ui/background-paths';
 import './Hero.css';
 
 const Hero = () => {
@@ -30,12 +31,11 @@ const Hero = () => {
     return (
         <section className="hero-container" ref={containerRef}>
             <motion.div
-                className="aurora-background"
+                className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
                 style={{ opacity, scale, filter: `blur(${blur}px)` }}
             >
-                <div className="aurora-blob blob-1"></div>
-                <div className="aurora-blob blob-2"></div>
-                <div className="aurora-blob blob-3"></div>
+                <FloatingPaths position={1} />
+                <FloatingPaths position={-1} />
             </motion.div>
 
             <div className="noise-overlay"></div>

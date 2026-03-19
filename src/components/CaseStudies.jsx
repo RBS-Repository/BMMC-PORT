@@ -75,23 +75,27 @@ const CaseStudies = () => {
     return (
         <section className="case-section-mag" id="case-studies">
             <div className="mag-container">
-                <div className="mag-header">
-                    <h2>Selected Stories</h2>
-                    <div className="mag-line"></div>
-                </div>
-
                 <div className="mag-layout">
-                    <div className="mag-nav">
-                        {studies.map(study => (
-                            <div
-                                key={study.id}
-                                className={`mag-nav-item ${activeId === study.id ? 'active' : ''}`}
-                                onClick={() => setActiveId(study.id)}
-                            >
-                                <span className="mag-nav-cat">{study.category}</span>
-                                <h4>{study.client}</h4>
-                            </div>
-                        ))}
+                    <div className="mag-side-sticky">
+                        <div className="mag-header-content">
+                            <span className="mag-label">Portfolio / 03</span>
+                            <h2 className="mag-title">Selected <br /> Stories</h2>
+                            <div className="mag-line"></div>
+                            <p className="mag-desc">Deep dives into the protocols, platforms, and ecosystems we've engineered.</p>
+                        </div>
+
+                        <div className="mag-nav">
+                            {studies.map(study => (
+                                <div
+                                    key={study.id}
+                                    className={`mag-nav-item ${activeId === study.id ? 'active' : ''}`}
+                                    onClick={() => setActiveId(study.id)}
+                                >
+                                    <span className="mag-nav-cat">{study.category}</span>
+                                    <h4>{study.client}</h4>
+                                </div>
+                            ))}
+                        </div>
                     </div>
 
                     <div className="mag-display">
