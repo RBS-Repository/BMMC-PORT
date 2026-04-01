@@ -78,7 +78,7 @@ const CaseStudies = () => {
                 <div className="mag-layout">
                     <div className="mag-side-sticky">
                         <div className="mag-header-content">
-                            <span className="mag-label">Portfolio / 03</span>
+                            <span className="mag-label">Case Studies / 03</span>
                             <h2 className="mag-title">Selected <br /> Stories</h2>
                             <div className="mag-line"></div>
                             <p className="mag-desc">Deep dives into the protocols, platforms, and ecosystems we've engineered.</p>
@@ -111,7 +111,7 @@ const CaseStudies = () => {
                                         transition={{ duration: 0.5 }}
                                     >
                                         <div className="mag-image-wrapper">
-                                            <img src={study.image} alt={study.title} />
+                                            <img src={study.image} alt={`${study.client} ${study.category} case study — ${study.result}`} />
                                             <div className="mag-overlay">
                                                 <span className="mag-result">{study.result}</span>
                                             </div>
@@ -154,7 +154,7 @@ const CaseStudies = () => {
 
                             <div className="modal-grid">
                                 <div className="modal-visual">
-                                    <img src={selectedStudy.image} alt={selectedStudy.title} />
+                                    <img src={selectedStudy.image} alt={`${selectedStudy.client} ${selectedStudy.category} case study — ${selectedStudy.result}`} />
                                     <div className="modal-stat">
                                         <span className="stat-label">Key Result</span>
                                         <span className="stat-value">{selectedStudy.result}</span>

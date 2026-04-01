@@ -15,7 +15,7 @@ const ProjectCard = ({ project, index }) => {
                 <div className="project-image-container">
                     <img
                         src={project.image}
-                        alt={project.title}
+                        alt={`${project.title} — ${project.category} project by BMMC Philippines`}
                         className="project-image"
                         loading="lazy"
                     />
@@ -71,66 +71,66 @@ const Projects = () => {
     const projects = [
         {
             title: "Jasmine AI Beta",
-            description: "Jasmine AI is AI companion with the capability of different personality",
+            description: "A fully functional AI companion with multi-personality switching, real-time conversation memory, and emotional context detection.",
             tech: ["React", "Node.js", "MongoDB"],
             image: "/project27.png",
-            category: 'Web',
+            category: "AI Web App",
             link: "https://jasmine-ai.vercel.app/",
         },
         {
             title: "Dandelion Chocolate",
-            description: "A bean-to-bar chocolate maker in San Francisco's Mission District crafting single-origin dark chocolate from just cocoa beans and organic sugar for over 10 years.",
+            description: "E-commerce rebuild for a San Francisco artisan chocolate brand — storytelling-led UX, performance optimization, and mobile conversion uplift.",
             tech: ["React", "Node.js", "MongoDB"],
             image: "/project25.png",
-            category: 'Web',
+            category: "E-Commerce",
             link: "https://www.dandelionchocolate.com/",
         },
         {
             title: "Memecoin Web3",
-            description: "A cryptocurrency platform designed for meme enthusiasts",
-            tech: ["React", "Node.js", "MongoDB"],
+            description: "A Web3 token launch platform with live price feeds, wallet connection, and animated meme-driven UI — designed to drive viral community engagement.",
+            tech: ["React", "Web3.js", "Solidity"],
             image: "/project1.png",
-            category: 'Web',
+            category: "Web3",
             link: "https://memecoin-woad.vercel.app/",
         },
         {
-            title: "Beauty lab cleanic product",
-            description: "A ecommerce website designed for Korean Beauty lab cleanic product",
+            title: "Beauty Lab Cleanic",
+            description: "Headless e-commerce for a Korean beauty brand. Mobile-first redesign with AI product recommendations resulted in 250% higher online sales.",
             tech: ["Vue.js", "AWS", "Python"],
             image: "/project21.png",
-            category: 'Web',
+            category: "E-Commerce",
             link: "https://shop.blcpcorp.com/",
         },
         {
             title: "Fear of God",
-            description: "A platform for the latest news and updates on Fear of God.",
-            tech: ["Next.js", "OpenAI", "PostgreSQL"],
+            description: "Philippine landing experience for the global luxury streetwear label — editorial layout with immersive scroll animations and collection drops.",
+            tech: ["Next.js", "GSAP", "PostgreSQL"],
             image: "/project3.png",
-            category: 'Design',
+            category: "Design",
             link: "https://fearofgod.com/en-ph"
         },
         {
             title: "Personal Portfolio",
-            description: "A dynamic portfolio with chatbot implementation,",
-            tech: ["React Native", "Firebase", "Three.js"],
+            description: "Developer portfolio with a live AI chatbot, Three.js 3D scene, and dynamic project showcase — a demonstration of BMMC's full creative range.",
+            tech: ["React", "Firebase", "Three.js"],
             image: "/project4.png",
-            category: 'Mobile',
+            category: "Portfolio",
             link: "https://rbs-repository.github.io/Ronelp/",
         },
         {
             title: "Two14 Cafe",
-            description: "A modern cafe website designed to showcase their diverse menu offerings",
-            tech: ["Python", "React", "TensorFlow"],
+            description: "Digital ordering ecosystem for an Australian cafe — cross-platform mobile app with real-time kitchen display. Reduced queue wait times by 50%.",
+            tech: ["React Native", "Firebase", "Node.js"],
             image: "/project5.png",
-            category: 'Web',
+            category: "Mobile App",
             link: "https://two14coffee.com.au/",
         },
         {
             title: "The Violet Hour",
-            description: "A modern cocktail website featuring their menu",
+            description: "Website redesign for a Chicago cocktail bar — atmospheric dark-mode design with animated menu browsing and event booking integration.",
             tech: ["Angular", "Node.js", "MySQL"],
             image: "/project6.png",
-            category: 'Web',
+            category: "Web Design",
             link: "https://www.theviolethour.com/",
         },
     ];

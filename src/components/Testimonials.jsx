@@ -28,12 +28,6 @@ const Testimonials = () => {
             role: "IT Director",
             text: "I was impressed by the clean code and performance optimizations. The website loads incredibly fast.",
             company: "DataPlus"
-        },
-        {
-            name: "David asasWong",
-            role: "IT Director",
-            text: "I was impressed by the clean code and performance optimizations. The website loads incredibly fast.",
-            company: "DataPlus"
         }
     ];
 
@@ -51,7 +45,7 @@ const Testimonials = () => {
                 <div className="t-grid-layout">
                     <div className="t-header-block">
                         <span className="t-label">Testimonials / 05</span>
-                        <h2 className="t-main-title">Voice of <br /> Our Partners</h2>
+                        <h2 className="t-main-title">What Our <br /> Clients Say</h2>
                         <div className="t-line"></div>
                         <p className="t-lead">We build relationships, not just interfaces. Here is what they say about our craft.</p>
                     </div>

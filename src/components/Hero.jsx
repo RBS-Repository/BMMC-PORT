@@ -45,6 +45,9 @@ const Hero = () => {
                 style={{ y: useTransform(scrollY, [0, 500], [0, 100]) }}
             >
                 <div className="hero-header">
+                    {/* Visually hidden H1 for SEO — crawlers read this, users see the display title below */}
+                    <h1 className="sr-only">AI-Powered Web Developer in the Philippines — BMMC, Rodriguez, Rizal</h1>
+
                     <motion.div
                         className="hero-label"
                         initial={{ opacity: 0, x: -30 }}
@@ -52,10 +55,10 @@ const Hero = () => {
                         transition={{ duration: 1.2 }}
                     >
                         <span className="label-line"></span>
-                        <span className="label-text">EST. 2025</span>
+                        <span className="label-text">BMMC · RODRIGUEZ, RIZAL, PH</span>
                     </motion.div>
 
-                    <h1 className="hero-title">
+                    <h2 className="hero-title" aria-label="Digital Alchemist — BMMC">
                         <span className="title-row overflow-hidden">
                             <motion.span
                                 className="outline-text block"
@@ -80,7 +83,7 @@ const Hero = () => {
                                 ALCHEMIST
                             </motion.span>
                         </span>
-                    </h1>
+                    </h2>
                 </div>
 
                 <motion.div
@@ -90,11 +93,11 @@ const Hero = () => {
                     transition={{ delay: 1, duration: 1.2 }}
                 >
                     <div className="hero-description">
-                        <p>Crafting immersive digital experiences through code, design, and innovation.</p>
+                        <p>We build AI-powered websites, custom web apps, and Web3 platforms for Philippine businesses ready to compete at a global level.</p>
                     </div>
 
                     <div className="hero-cta">
-                        <a href="#projects" className="circle-btn">
+                        <a href="#projects" className="circle-btn" aria-label="View our work">
                             <motion.span
                                 className="btn-text"
                                 animate={{
@@ -106,6 +109,9 @@ const Hero = () => {
                                 VIEW<br />WORK
                             </motion.span>
                             <div className="btn-border"></div>
+                        </a>
+                        <a href="#contact" className="hero-quote-link" aria-label="Get a free project quote">
+                            Get a Free Quote →
                         </a>
                     </div>
                 </motion.div>

@@ -25,7 +25,7 @@ const About = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                     >
-                        DIGITAL <br /> ALCHEMY
+                        THE STUDIO <br /> BEHIND THE CODE
                     </motion.h2>
                     <motion.div
                         className="about-decor-line"
@@ -38,9 +38,9 @@ const About = () => {
 
                 <div className="about-stream">
                     {[
-                        { num: "01 // THE ORIGIN", title: "From Code to Consciousness", text: "We started as a simple idea: that functional code should be inseparable from beautiful design. BMMC (Budaque Multi Media Creation) was born in Rodriguez, Rizal, not just as an agency, but as a laboratory for digital experiments." },
-                        { num: "02 // THE PHILOSOPHY", title: "Useless but Happy?", text: "We believe in \"useless\" beauty—details that don't increase conversion rates but make a user smile. The small animations, the hidden interactions, the easter eggs. These aren't useless; they're the soul of the machine.", highlight: true },
-                        { num: "03 // THE FUTURE", title: "Beyond the Screen", text: "Web3, AI, AR—we aren't just watching the future happen; we're writing the code for it. Our mission is to humanize technology, making the complex feel simple and the digital feel tangible." }
+                        { num: "01 // THE ORIGIN", title: "From Rizal to the World", text: "We started as a simple idea in Rodriguez, Rizal: that functional code should be inseparable from beautiful design. BMMC (Budaque Multi Media Creations) was built not just as an agency, but as a laboratory for digital experiments — serving clients from the Philippines to Southeast Asia and beyond." },
+                        { num: "02 // THE PHILOSOPHY", title: "Code That Feels Alive", text: "We believe the best digital experiences are the ones you feel before you understand. The subtle animation that greets you. The hover state that surprises you. The page that loads before you notice. These aren't extras — they're the difference between a website people tolerate and one they remember.", highlight: true },
+                        { num: "03 // THE FUTURE", title: "Writing Tomorrow's Web, Today", text: "Web3, AI, spatial computing — we aren't just watching the future happen; we're writing the code for it. Our mission is to help Philippine businesses harness the same technology as global companies, at a price point that makes sense locally." }
                     ].map((item, i) => (
                         <motion.div
                             key={i}

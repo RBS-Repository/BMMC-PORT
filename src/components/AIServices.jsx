@@ -5,12 +5,12 @@ import './AIServices.css';
 
 const AIServices = () => {
     const services = [
-        { num: "01", title: "NEURAL LLM", desc: "Custom-trained language models tailored to your business DNA. GPT-4 & Claude integration with domain fine-tuning." },
-        { num: "02", title: "COGNITIVE BOTS", desc: "Context-aware agents that evolve with every interaction. 24/7 autonomy with sentiment analysis core." },
-        { num: "03", title: "AUTO-SYSTEMS", desc: "Self-optimizing autonomous business processes. RPA 2.0 with smart document processing." },
-        { num: "04", title: "VISION CORE", desc: "Systems that interpret the visual world with human-like accuracy. Object detection and visual QC." },
-        { num: "05", title: "PREDICTIVE AX", desc: "Forecasting engines that see the future of your data. Trend analysis and risk modeling." },
-        { num: "06", title: "NLP ENGINE", desc: "Bridging the gap between human intent and machine execution. Voice synthesis and intent classification." }
+        { num: "01", title: "NEURAL LLM", desc: "Custom language models trained on your business data. Integrate GPT-4 or Claude with fine-tuning for industry-specific accuracy. Ideal for customer support and document analysis." },
+        { num: "02", title: "COGNITIVE BOTS", desc: "AI chatbots that understand context, remember history, and escalate to humans when needed. Runs 24/7 so your business never goes offline." },
+        { num: "03", title: "AUTO-SYSTEMS", desc: "Automate repetitive tasks — invoice processing, data entry, report generation — with self-optimizing RPA pipelines that get smarter over time." },
+        { num: "04", title: "VISION CORE", desc: "AI that reads images and video with human-level accuracy. Perfect for quality control, inventory management, and visual product search." },
+        { num: "05", title: "PREDICTIVE AX", desc: "Know what your customers will do before they do it. Machine learning models that forecast demand, churn, and revenue trends from your existing data." },
+        { num: "06", title: "NLP ENGINE", desc: "Build voice assistants, multilingual chatbots, and sentiment dashboards. Supports Filipino language processing for local market accuracy." }
     ];
 
     const containerRef = React.useRef(null);
@@ -34,9 +34,9 @@ const AIServices = () => {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                 >
-                    <span className="ai-p-label">Intelligence / 02</span>
-                    <h2 className="ai-p-title">Future <br /> Proofing</h2>
-                    <p className="ai-p-lead">We engineer next-generation AI solutions designed for the high-end digital landscape.</p>
+                    <span className="ai-p-label">AI Services / 02</span>
+                    <h2 className="ai-p-title">AI Intelligence <br /> Systems</h2>
+                    <p className="ai-p-lead">We engineer next-generation AI solutions for Philippine businesses ready to automate, scale, and lead their industry.</p>
                 </motion.div>
 
                 <div className="ai-p-grid">

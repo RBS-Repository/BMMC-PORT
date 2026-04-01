@@ -7,24 +7,24 @@ const FAQ = () => {
 
     const faqs = [
         {
-            question: "Technical Capabilities",
-            answer: "We offer a comprehensive range of digital services including web development, mobile app development, UI/UX design, and digital strategy consulting. Our team specializes in creating custom solutions tailored to your specific needs."
+            question: "Do you build websites for Philippine businesses specifically?",
+            answer: "Yes — BMMC is based in Rodriguez, Rizal and we specialize in serving Filipino businesses ranging from small online shops to enterprise platforms. We understand local payment gateways (GCash, PayMaya), hosting preferences, and the Philippine market. We also work with international clients across Southeast Asia and the US."
         },
         {
-            question: "Delivery Timeline",
-            answer: "Project timelines vary depending on scope and complexity. A typical website project takes 6-12 weeks, while larger applications may take 3-6 months. We'll provide a detailed timeline during our initial consultation."
+            question: "How long does it take to build a website?",
+            answer: "A standard business website takes 3–6 weeks from kickoff to launch. E-commerce sites typically take 6–10 weeks depending on catalog size. AI-powered and Web3 projects are scoped individually. We'll give you a clear timeline in your free consultation."
         },
         {
-            question: "Foundational Process",
-            answer: "Our development process follows an agile methodology with five key phases: Discovery, Strategy, Design, Development, and Launch. We maintain clear communication and regular updates throughout the project lifecycle."
+            question: "What is your development process?",
+            answer: "We follow a 5-phase process: Discovery (goals + research), Strategy (architecture + wireframes), Design (UI prototypes), Development (clean, tested code), and Launch (deployment + SEO setup). You're involved at every sign-off stage with no surprises."
         },
         {
-            question: "Support & Maintenance",
-            answer: "Yes, we offer comprehensive post-launch support and maintenance packages. This includes regular updates, security patches, performance monitoring, and technical support to ensure your solution continues to perform optimally."
+            question: "Do you offer post-launch support and maintenance?",
+            answer: "Yes. All projects include a 14-day post-launch warranty at no extra cost. For ongoing care, we offer three maintenance plans starting at ₱3,500/month — covering updates, backups, uptime monitoring, and more. View our Maintenance Plans section for details."
         },
         {
-            question: "Modern Tech-Stack",
-            answer: "We work with modern technologies including React, Node.js, Next.js, and various cloud platforms. Our tech stack is chosen based on project requirements to ensure the best performance and scalability."
+            question: "What technologies do you use?",
+            answer: "Our primary stack is React, Next.js, and Node.js for web, with Python and TensorFlow for AI services. We also work with Vue.js, Firebase, MongoDB, and AWS. For Web3, we use Solidity and ethers.js. Every stack decision is made based on what's best for your specific project."
         }
     ];
 
@@ -33,8 +33,8 @@ const FAQ = () => {
             <div className="arch-container">
                 <div className="arch-grid">
                     <div className="arch-side">
-                        <span className="arch-label">Inquiry / 03</span>
-                        <h2 className="arch-title">Frequently <br /> Asked</h2>
+                        <span className="arch-label">FAQ / 04</span>
+                        <h2 className="arch-title">Frequently <br /> Asked Questions</h2>
                         <div className="arch-line"></div>
                         <p className="arch-desc">Everything you need to know about our collaboration model and delivery standards.</p>
                     </div>
