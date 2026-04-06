@@ -1,11 +1,16 @@
+/* =========================================
+   HOW WE WORK — Process Section
+   Premium dark theme with elegant spacing
+   ========================================= */
+
 .how-section {
     padding: 120px 0;
     padding-left: 20%;
-    /* Offset for interesting layout */
     background: #000;
     color: white;
     font-family: 'Inter', sans-serif;
     min-height: 80vh;
+    position: relative;
 }
 
 .how-container {
@@ -13,20 +18,62 @@
     padding-right: 2rem;
 }
 
+/* --- HEADER --- */
+
 .how-header {
     margin-bottom: 5rem;
+}
+
+.process-label {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #555;
+    margin-bottom: 1.5rem;
 }
 
 .how-header h2 {
     font-size: 3.5rem;
     font-family: 'Oswald', sans-serif;
     letter-spacing: -2px;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #fff 0%, #aaa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-.how-header p {
-    color: #666;
+.how-subtitle {
+    color: #777;
     font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 650px;
+}
+
+.how-header-line {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(to right, #fff, transparent);
+    margin-top: 2rem;
+    transform-origin: left;
+}
+
+/* --- PHASES SECTION --- */
+
+.phases-section {
+    margin-bottom: 5rem;
+}
+
+.section-subtitle {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    margin-bottom: 3rem;
+    color: #ddd;
 }
 
 .process-list {
@@ -37,8 +84,22 @@
 .process-item {
     display: flex;
     gap: 3rem;
-    min-height: 150px;
+    min-height: 120px;
     position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.process-item:hover .process-content h3 {
+    color: #fff;
+}
+
+.process-item:hover .phase-icon {
+    transform: scale(1.15);
+}
+
+.process-item.active {
+    margin-bottom: 0.5rem;
 }
 
 .process-meta {
@@ -46,6 +107,7 @@
     flex-direction: column;
     align-items: center;
     width: 50px;
+    flex-shrink: 0;
 }
 
 .process-num {
@@ -54,13 +116,22 @@
     font-weight: 700;
     color: #fff;
     margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+
+.process-item.active .process-num {
+    color: #646cff;
 }
 
 .process-line {
     width: 1px;
     flex-grow: 1;
-    background: linear-gradient(to bottom, #fff 0%, #333 100%);
-    opacity: 0.3;
+    background: linear-gradient(to bottom, #444 0%, #222 100%);
+    transition: background 0.4s ease;
+}
+
+.process-item.active .process-line {
+    background: linear-gradient(to bottom, #646cff 0%, #333 100%);
 }
 
 .process-item:last-child .process-line {
@@ -68,35 +139,299 @@
 }
 
 .process-content {
-    padding-bottom: 4rem;
+    padding-bottom: 3rem;
+    flex: 1;
+}
+
+.process-title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.phase-icon {
+    font-size: 1.4rem;
+    transition: transform 0.3s ease;
+    line-height: 1;
 }
 
 .process-content h3 {
     font-size: 2rem;
     font-weight: 500;
-    margin-bottom: 1rem;
     letter-spacing: -0.5px;
+    color: #ccc;
+    transition: color 0.3s ease;
 }
 
-.process-content p {
-    color: #888;
-    line-height: 1.6;
-    max-width: 600px;
+.process-item.active .process-content h3 {
+    color: #fff;
 }
+
+.phase-tagline {
+    color: #666;
+    font-size: 1rem;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.phase-expanded {
+    overflow: hidden;
+}
+
+.phase-desc {
+    color: #888;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    max-width: 600px;
+    margin-top: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.phase-deliverable {
+    display: inline-block;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #646cff;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(100, 108, 255, 0.3);
+    border-radius: 4px;
+    margin-top: 0.25rem;
+}
+
+.phase-expand-hint {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #555;
+    margin-top: 0.75rem;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.process-item:hover .phase-expand-hint {
+    color: #888;
+}
+
+/* --- CONTRACTS SECTION --- */
+
+.contracts-section {
+    border-top: 1px solid #1a1a1a;
+    padding-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+.contracts-header {
+    margin-bottom: 3rem;
+}
+
+.contracts-header h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.contracts-subtitle {
+    color: #777;
+    font-size: 1rem;
+    line-height: 1.8;
+    max-width: 650px;
+}
+
+.contracts-subtitle em {
+    color: #ccc;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.contracts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.contract-card {
+    background: #0a0a0a;
+    border: 1px solid #1a1a1a;
+    padding: 2rem;
+    border-radius: 8px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.contract-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, #646cff, transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.contract-card:hover {
+    border-color: #2a2a2a;
+    transform: translateY(-2px);
+}
+
+.contract-card:hover::before {
+    opacity: 1;
+}
+
+.contract-icon {
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 1rem;
+    line-height: 1;
+}
+
+.contract-card h4 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.5px;
+    color: #eee;
+}
+
+.contract-card p {
+    color: #777;
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+/* --- ALCHEMY FOOTER --- */
+
+.alchemy-footer {
+    text-align: center;
+    padding: 4rem 0 2rem;
+}
+
+.alchemy-footer-line {
+    width: 40px;
+    height: 1px;
+    background: #333;
+    margin: 0 auto 2.5rem;
+}
+
+.alchemy-footer p {
+    font-size: 1.15rem;
+    color: #666;
+    line-height: 1.9;
+    max-width: 550px;
+    margin: 0 auto 2rem;
+    font-style: italic;
+}
+
+.alchemy-footer em {
+    color: #fff;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.process-cta {
+    display: inline-block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 1rem 2.5rem;
+    border: 1px solid #333;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.process-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(100, 108, 255, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.process-cta:hover {
+    border-color: #646cff;
+    color: #fff;
+    text-decoration: none;
+}
+
+.process-cta:hover::before {
+    left: 100%;
+}
+
+/* --- RESPONSIVE --- */
 
 @media (max-width: 1024px) {
     .how-section {
         padding-left: 5%;
         padding-right: 5%;
     }
+
+    .contracts-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
+    .how-header h2 {
+        font-size: 2.5rem;
+    }
+
     .process-item {
         gap: 1.5rem;
     }
 
     .process-content h3 {
         font-size: 1.5rem;
+    }
+
+    .section-subtitle {
+        font-size: 1.3rem;
+    }
+
+    .contracts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contracts-header h3 {
+        font-size: 1.6rem;
+    }
+
+    .alchemy-footer p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .how-header h2 {
+        font-size: 2rem;
+    }
+
+    .process-content h3 {
+        font-size: 1.25rem;
+    }
+
+    .contract-card {
+        padding: 1.5rem;
+    }
+
+    .process-cta {
+        width: 100%;
+        text-align: center;
     }
 }

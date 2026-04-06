@@ -16,7 +16,7 @@ const FAQ = () => {
         },
         {
             question: "What is your development process?",
-            answer: "We follow a 5-phase process: Discovery (goals + research), Strategy (architecture + wireframes), Design (UI prototypes), Development (clean, tested code), and Launch (deployment + SEO setup). You're involved at every sign-off stage with no surprises."
+            answer: "We follow a structured 5-phase process: Discovery (goals + market research), Wireframe & Strategy (architecture + interactive prototypes), Development (iterative sprints with regular check-ins), Testing & QA (cross-device, performance, and security audits), and Deployment (launch + SEO + monitoring). Every project is backed by a signed contract with defined scope, timeline, payment milestones, and revision limits — so you're protected at every stage."
         },
         {
             question: "Do you offer post-launch support and maintenance?",
