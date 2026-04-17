@@ -70,6 +70,14 @@ const Projects = () => {
 
     const projects = [
         {
+            title: "Haven Windows",
+            description: "Modern, high-performance website for Haven Windows & Doors NZ. ",
+            tech: ["React", "Next.js", "Tailwind CSS", "Node.js", "MongoDB"],
+            image: "/project3354335.jpg",
+            category: "Business / E-commerce Web App",
+            link: "https://www.havenwindows.co.nz/"
+        },
+        {
             title: "Jasmine AI Beta",
             description: "A fully functional AI companion with multi-personality switching, real-time conversation memory, and emotional context detection.",
             tech: ["React", "Node.js", "MongoDB"],

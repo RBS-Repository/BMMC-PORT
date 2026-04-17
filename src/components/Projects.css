@@ -78,12 +78,12 @@
 
 .horizontal-slide {
     flex-shrink: 0;
-    width: 600px;
+    width: min(85vw, 550px); /* Adjusted to fit better without taking up all space on smaller laptops */
 }
 
 .project-image-container {
     width: 100%;
-    aspect-ratio: 16/10;
+    aspect-ratio: 16/9; /* Reduce vertical height */
     position: relative;
     overflow: hidden;
 }
@@ -106,11 +106,11 @@
 }
 
 .project-index {
-    font-size: 5rem;
+    font-size: 4rem; /* Down from 5rem to avoid invading space */
     font-family: 'Oswald', sans-serif;
     color: #ff9d9d;
     line-height: 0.8;
-    letter-spacing: -3px;
+    letter-spacing: -2px;
     font-weight: 700;
 }
 
@@ -130,7 +130,7 @@
 }
 
 .project-display-title {
-    font-size: 2.2rem;
+    font-size: 1.8rem; /* Down from 2.2rem */
     margin: 0 0 0.5rem 0;
     font-weight: 500;
     color: #fff;
@@ -254,14 +254,13 @@
     }
 
     .horizontal-track-container {
-        padding: 2rem;
+        padding: 1.5rem; /* Less padding to give more room for card */
     }
 
     .projects-horizontal-track {
         flex-direction: column;
         width: 100%;
-        gap: 3rem;
-        /* Increase spacing */
+        gap: 2rem; /* Reduce spacing slightly to avoid too much scrolling */
         transform: none !important;
     }
 
@@ -274,12 +273,16 @@
         padding: 4rem 2rem;
     }
 
+    .project-content {
+        padding: 1.5rem; /* Reduce padding on mobile */
+    }
+
     .project-index {
-        font-size: 3rem;
+        font-size: 2.5rem; /* Scale down index */
     }
 
     .project-display-title {
-        font-size: 1.8rem;
+        font-size: 1.5rem; /* Scale down title */
     }
 
     .project-card-overlay {
@@ -287,7 +290,7 @@
         opacity: 1 !important;
         background: transparent !important;
         backdrop-filter: none;
-        padding: 0 2rem 2rem 2rem;
+        padding: 0 1.5rem 1.5rem 1.5rem; /* Matching project-content padding */
         justify-content: stretch;
     }
 
@@ -383,8 +386,8 @@
 /* Archive Grid */
 .projects-grid-refined {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-    gap: 3rem;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); /* Reduce min-width so cards don't pop huge */
+    gap: 2rem; /* Reduce gap */
 }
 
 @media (max-width: 1024px) {
@@ -402,7 +405,7 @@
 
     .projects-grid-refined {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.5rem; /* Even tighter gap for mobile */
     }
 }
 
