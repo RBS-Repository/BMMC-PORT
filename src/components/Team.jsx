@@ -8,7 +8,7 @@ const Team = () => {
             role: "Lead Architect",
             image: "https://media.istockphoto.com/id/1327592449/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=yqoos7g9jmufJhfkbQsk-mdhKEsih6Di4WZ66t_ib7I=",
             desc: "Specializing in scalable system architecture and full-stack solutions.",
-            portfolio: "https://jasper-mu.vercel.app/"
+            portfolio: "https://jasper-p.vercel.app/"
         },
         {
             name: "Jhanell De Mesa",
