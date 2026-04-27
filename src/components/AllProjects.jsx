@@ -8,8 +8,17 @@ const AllProjects = () => {
     const [filteredProjects, setFilteredProjects] = useState([]);
 
     const projects = [
+        {
+            title: "Haven Windows",
+            description: "Modern, high-performance website for Haven Windows & Doors NZ. ",
+            tech: ["React", "Next.js", "Tailwind CSS", "Node.js", "MongoDB"],
+            image: "/project3354335.jpg",
+            category: "Web",
+            link: "https://www.havenwindows.co.nz/"
+        },
 
         {
+
             title: "Jasmine AI Beta",
             description: "Jasmine AI is AI companion with the capability of different personality",
             tech: ["React", "Node.js", "MongoDB"],
@@ -153,6 +162,9 @@ const AllProjects = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
+    }, []);
+
+    useEffect(() => {
         if (filter === 'All') {
             setFilteredProjects(projects);
         } else {
@@ -162,11 +174,12 @@ const AllProjects = () => {
 
     return (
         <section className="projects-premium-section archive-page">
+            <div className="archive-ambient-glow"></div>
             <div className="premium-container">
                 <div className="premium-header archive-header">
                     <div className="header-labels">
                         <Link to="/" className="back-home-link">← Back to Selection</Link>
-                        <span>Full Archive / 2024 — 2026</span>
+                        <span> Archive / 2024 — 2026</span>
                     </div>
                     <div className="archive-title-wrap">
                         <h2 className="premium-title">Complete <br /> Works</h2>
@@ -184,7 +197,7 @@ const AllProjects = () => {
                     </div>
                 </div>
 
-                <div className="projects-grid-refined">
+                <motion.div layout className="glass-projects-grid">
                     <AnimatePresence mode="popLayout">
                         {filteredProjects.map((project, index) => (
                             <motion.a
@@ -193,43 +206,37 @@ const AllProjects = () => {
                                 href={project.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="refined-project-card"
-                                initial={{ opacity: 0, y: 30 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, scale: 0.95 }}
-                                transition={{ duration: 0.6 }}
+                                className="glass-project-card"
+                                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                                animate={{ opacity: 1, scale: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
+                                transition={{ duration: 0.5, ease: [0.2, 1, 0.3, 1] }}
                             >
-                                <div className="project-card-inner">
-                                    <div className="project-image-container">
-                                        <img src={project.image} alt={project.title} className="project-image" loading="lazy" />
-                                        <div className="project-category-badge">{project.category}</div>
-                                    </div>
-                                    <div className="project-content">
-                                        <div className="project-meta">
-                                            <span className="project-index">0{index + 1}</span>
-                                            <div className="project-tech-stack">
-                                                {project.tech.map((t, i) => (
-                                                    <span key={i} className="tech-tag">{t}</span>
-                                                ))}
-                                            </div>
-                                        </div>
-                                        <h3 className="project-display-title">{project.title}</h3>
-                                        <p className="project-display-description">{project.description}</p>
-                                    </div>
-                                    <div className="project-card-overlay">
-                                        <div className="project-link-cta">
-                                            <span>View Project</span>
-                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                                <line x1="7" y1="17" x2="17" y2="7"></line>
-                                                <polyline points="7 7 17 7 17 17"></polyline>
+                                <div className="glass-card-image-wrapper">
+                                    <img src={project.image} alt={project.title} className="glass-card-image" loading="lazy" />
+                                    <div className="glass-card-badge">{project.category}</div>
+                                </div>
+                                <div className="glass-card-content">
+                                    <div className="glass-card-header">
+                                        <h3 className="glass-card-title">{project.title}</h3>
+                                        <div className="glass-card-arrow">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                <line x1="5" y1="19" x2="19" y2="5"></line>
+                                                <polyline points="9 5 19 5 19 15"></polyline>
                                             </svg>
                                         </div>
+                                    </div>
+                                    <p className="glass-card-desc">{project.description}</p>
+                                    <div className="glass-card-tech">
+                                        {project.tech.map((t, i) => (
+                                            <span key={i} className="glass-tech-tag">{t}</span>
+                                        ))}
                                     </div>
                                 </div>
                             </motion.a>
                         ))}
                     </AnimatePresence>
-                </div>
+                </motion.div>
             </div>
         </section>
     );

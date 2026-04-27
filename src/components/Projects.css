@@ -383,11 +383,176 @@
     background: #6366f1;
 }
 
-/* Archive Grid */
-.projects-grid-refined {
+.premium-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 5vw;
+}
+
+.archive-ambient-glow {
+    position: fixed;
+    top: -20%;
+    left: -10%;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(5, 5, 5, 0) 70%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Glassmorphism Cards */
+.glass-projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); /* Reduce min-width so cards don't pop huge */
-    gap: 2rem; /* Reduce gap */
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 3rem;
+    margin-top: 4rem;
+    position: relative;
+    z-index: 10;
+}
+
+.glass-project-card {
+    position: relative;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    color: white;
+    overflow: hidden;
+}
+
+.glass-project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 24px;
+    background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.2), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.glass-project-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(99, 102, 241, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(99, 102, 241, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.glass-project-card:hover::before {
+    opacity: 1;
+}
+
+.glass-card-image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/10;
+    border-radius: 16px;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.glass-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: brightness(0.9) contrast(1.1);
+}
+
+.glass-project-card:hover .glass-card-image {
+    transform: scale(1.05);
+}
+
+.glass-card-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.glass-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex-grow: 1;
+    z-index: 2;
+}
+
+.glass-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.glass-card-title {
+    font-size: 1.8rem;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    margin: 0;
+    font-weight: 500;
+}
+
+.glass-card-arrow {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+}
+
+.glass-project-card:hover .glass-card-arrow {
+    background: #6366f1;
+    color: white;
+    transform: rotate(45deg);
+    border-color: #6366f1;
+}
+
+.glass-card-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.glass-tech-tag {
+    font-size: 0.75rem;
+    color: #ccc;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.glass-card-desc {
+    color: #888;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 @media (max-width: 1024px) {
@@ -403,20 +568,8 @@
         gap: 1.5rem;
     }
 
-    .projects-grid-refined {
-        grid-template-columns: 1fr;
-        gap: 1.5rem; /* Even tighter gap for mobile */
-    }
-}
-
-/* Desktop Only Interactions */
-@media (min-width: 1025px) {
-    .refined-project-card:hover .project-card-overlay {
-        opacity: 1;
-    }
-
-    .refined-project-card:hover {
-        border-color: rgba(255, 255, 255, 0.2);
-        transform: translateY(-8px);
+    .glass-projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
     }
 }
