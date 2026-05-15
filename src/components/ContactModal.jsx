@@ -89,7 +89,7 @@ const ContactModal = ({ isOpen, onClose }) => {
                                     <p>Tell us about your mission. <br /> We'll help you reach it.</p>
                                     <div className="sidebar-contact">
                                         <span>budaquecreations@googlemail.com</span>
-                                        <span>+63 976 292 6882</span>
+                                        <span>+63 976 641 1918</span>
                                     </div>
                                 </div>
                             </div>
