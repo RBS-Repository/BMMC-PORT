@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 
-const SITE_URL = 'https://budaquecreations.vercel.app';
+const SITE_URL = 'https://budaquecreations.giize.com';
 const SITE_NAME = 'BMMC — Budaque Creations';
 const DEFAULT_OG_IMAGE = `${SITE_URL}/BMMC%20PNG.png`;
 

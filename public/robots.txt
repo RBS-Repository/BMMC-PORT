@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://budaquecreations.vercel.app/sitemap.xml
+Sitemap: https://budaquecreations.giize.com/sitemap.xml
