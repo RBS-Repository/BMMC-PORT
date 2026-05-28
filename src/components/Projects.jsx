@@ -70,6 +70,14 @@ const Projects = () => {
 
     const projects = [
         {
+            title: "RiftNest Movies",
+            description: "Curated free movie streaming sites with no ads and no signups required. A hub for the best cinematic experiences.",
+            tech: ["React", "HTML", "CSS"],
+            image: "https://i.imgur.com/g49PQ4J.png",
+            category: "Web App",
+            link: "https://www.riftnest.giize.com/movies"
+        },
+        {
             title: "Haven Windows",
             description: "Modern, high-performance website for Haven Windows & Doors NZ. ",
             tech: ["React", "Next.js", "Tailwind CSS", "Node.js", "MongoDB"],
