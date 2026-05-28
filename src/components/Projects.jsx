@@ -179,15 +179,25 @@ const Projects = () => {
                         ))}
 
                         {/* View Full Archive Slide */}
-                        <Link to="/all-projects" className="refined-project-card archive-slide">
-                            <div className="archive-slide-content">
-                                <span className="archive-label">View Full Archive</span>
-                                <div className="archive-arrow">
-                                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                                        <path d="M5 12H19M19 12L12 5M19 12L12 19" strokeLinecap="round" strokeLinejoin="round" />
+                        <Link to="/all-projects" className="refined-project-card premium-archive-card">
+                            <div className="premium-archive-content">
+                                <div className="archive-stats">
+                                    <span className="archive-count">19</span>
+                                    <span className="archive-count-label">Total<br />Projects</span>
+                                </div>
+                                <div className="archive-divider"></div>
+                                <div className="archive-main-cta">
+                                    <h3 className="archive-heading">Explore Full Archive</h3>
+                                    <p className="archive-subtext">Discover our complete collection of digital experiences, web apps, and creative designs.</p>
+                                </div>
+                                <div className="premium-archive-arrow">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
                                     </svg>
                                 </div>
                             </div>
+                            <div className="premium-archive-glow"></div>
                         </Link>
                     </motion.div>
                 </div>

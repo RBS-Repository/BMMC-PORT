@@ -78,12 +78,14 @@
 
 .horizontal-slide {
     flex-shrink: 0;
-    width: min(85vw, 550px); /* Adjusted to fit better without taking up all space on smaller laptops */
+    width: min(85vw, 550px);
+    /* Adjusted to fit better without taking up all space on smaller laptops */
 }
 
 .project-image-container {
     width: 100%;
-    aspect-ratio: 16/9; /* Reduce vertical height */
+    aspect-ratio: 16/9;
+    /* Reduce vertical height */
     position: relative;
     overflow: hidden;
 }
@@ -106,7 +108,8 @@
 }
 
 .project-index {
-    font-size: 4rem; /* Down from 5rem to avoid invading space */
+    font-size: 4rem;
+    /* Down from 5rem to avoid invading space */
     font-family: 'Oswald', sans-serif;
     color: #ff9d9d;
     line-height: 0.8;
@@ -130,7 +133,8 @@
 }
 
 .project-display-title {
-    font-size: 1.8rem; /* Down from 2.2rem */
+    font-size: 1.8rem;
+    /* Down from 2.2rem */
     margin: 0 0 0.5rem 0;
     font-weight: 500;
     color: #fff;
@@ -163,49 +167,146 @@
     z-index: 5;
 }
 
-/* Archive Slide */
-.archive-slide {
-    width: 400px;
+/* Premium Archive Card */
+.premium-archive-card {
+    position: relative;
+    width: min(85vw, 550px);
     display: flex !important;
-    /* Overwrite inherit */
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border: 1px dashed rgba(255, 255, 255, 0.1);
-    background: transparent;
-    gap: 2rem;
-    text-align: center;
+    align-items: stretch;
+    justify-content: stretch;
+    background: linear-gradient(145deg, rgba(20, 20, 25, 1) 0%, rgba(10, 10, 12, 1) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+    padding: 3.5rem;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.archive-label {
-    font-size: 1.1rem;
+.premium-archive-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 0;
+}
+
+.premium-archive-card:hover {
+    border-color: rgba(99, 102, 241, 0.4);
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(99, 102, 241, 0.2);
+}
+
+.premium-archive-card:hover::before {
+    opacity: 1;
+}
+
+.premium-archive-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    position: relative;
+}
+
+.archive-stats {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+.archive-count {
+    font-size: 8rem;
+    font-family: 'Oswald', sans-serif;
+    line-height: 0.8;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.15);
+    font-weight: 700;
+    transition: all 0.5s ease;
+}
+
+.premium-archive-card:hover .archive-count {
+    color: #fff;
+    -webkit-text-stroke: 2px transparent;
+    text-shadow: 0 0 30px rgba(99, 102, 241, 0.6);
+}
+
+.archive-count-label {
+    font-size: 1rem;
+    line-height: 1.2;
     text-transform: uppercase;
-    letter-spacing: 5px;
-    color: #6366f1;
+    letter-spacing: 3px;
+    color: #888;
     font-weight: 600;
 }
 
-.archive-arrow {
-    width: 100px;
-    height: 100px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+.archive-divider {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+    margin: 2.5rem 0;
+}
+
+.archive-main-cta {
+    margin-bottom: 2.5rem;
+}
+
+.archive-heading {
+    font-size: 2.2rem;
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    margin: 0 0 1rem 0;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.archive-subtext {
+    font-size: 0.95rem;
+    color: #aaa;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 90%;
+    font-weight: 400;
+}
+
+.premium-archive-arrow {
+    align-self: flex-end;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 0.4s ease;
     color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.archive-slide:hover {
-    border-color: #6366f1;
-    background: rgba(99, 102, 241, 0.05);
-}
-
-.archive-slide:hover .archive-arrow {
+.premium-archive-card:hover .premium-archive-arrow {
     background: #fff;
     color: #000;
-    transform: rotate(-45deg);
+    border-color: #fff;
+    transform: translateX(10px);
+}
+
+.premium-archive-glow {
+    position: absolute;
+    bottom: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+    transition: transform 0.5s ease;
+}
+
+.premium-archive-card:hover .premium-archive-glow {
+    transform: scale(1.3);
 }
 
 /* Hover Overlay (Desktop) */
@@ -254,35 +355,44 @@
     }
 
     .horizontal-track-container {
-        padding: 1.5rem; /* Less padding to give more room for card */
+        padding: 1.5rem;
+        /* Less padding to give more room for card */
     }
 
     .projects-horizontal-track {
         flex-direction: column;
         width: 100%;
-        gap: 2rem; /* Reduce spacing slightly to avoid too much scrolling */
+        gap: 2rem;
+        /* Reduce spacing slightly to avoid too much scrolling */
         transform: none !important;
     }
 
     .horizontal-slide,
-    .archive-slide {
+    .premium-archive-card {
         width: 100%;
     }
 
-    .archive-slide {
-        padding: 4rem 2rem;
+    .premium-archive-card {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .archive-count {
+        font-size: 5rem;
     }
 
     .project-content {
-        padding: 1.5rem; /* Reduce padding on mobile */
+        padding: 1.5rem;
+        /* Reduce padding on mobile */
     }
 
     .project-index {
-        font-size: 2.5rem; /* Scale down index */
+        font-size: 2.5rem;
+        /* Scale down index */
     }
 
     .project-display-title {
-        font-size: 1.5rem; /* Scale down title */
+        font-size: 1.5rem;
+        /* Scale down title */
     }
 
     .project-card-overlay {
@@ -290,7 +400,8 @@
         opacity: 1 !important;
         background: transparent !important;
         backdrop-filter: none;
-        padding: 0 1.5rem 1.5rem 1.5rem; /* Matching project-content padding */
+        padding: 0 1.5rem 1.5rem 1.5rem;
+        /* Matching project-content padding */
         justify-content: stretch;
     }
 
@@ -430,7 +541,10 @@
 .glass-project-card::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     border-radius: 24px;
     background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.2), transparent 60%);
     opacity: 0;

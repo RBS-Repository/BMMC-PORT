@@ -12,7 +12,7 @@ const AllProjects = () => {
             title: "RiftNest Movies",
             description: "Curated free movie streaming sites with no ads and no signups required. A hub for the best cinematic experiences.",
             tech: ["React", "HTML", "CSS"],
-            image: "/project19.png",
+            image: "https://i.imgur.com/g49PQ4J.png",
             category: "Web",
             link: "https://www.riftnest.giize.com/movies"
         },
